@@ -21,7 +21,7 @@
         <sys_class_name>sys_db_object</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2016-02-07 17:23:25</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>f108357f6f51120029ac58754b3ee4c9</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Context</sys_name>

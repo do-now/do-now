@@ -17,11 +17,11 @@
         <number_ref/>
         <provider_class/>
         <read_access>true</read_access>
-        <super_class display_value="Task" name="task">ff26e44113201200351d58a12244b0b9</super_class>
+        <super_class display_value="Task" name="task">da7bce9413121200578e30a76144b01e</super_class>
         <sys_class_name>sys_db_object</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2016-02-07 17:19:05</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>5ff6b9bf6f51120029ac58754b3ee46b</sys_id>
         <sys_mod_count>1</sys_mod_count>
         <sys_name>Action</sys_name>
