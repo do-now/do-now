@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element audit="true" extends="task" label="Action" max_length="40" name="x_snc_donow_action" sizeclass="12" type="collection">
+        <element choice="1" default="javascript:new DoNowUtil().getMyDefaultContext();" label="Context" max_length="32" name="context" reference="x_snc_donow_context" reference_qual="ownerDYNAMIC90d1921e5f510100a9ad2572f2b477fe^EQ" reference_qual_condition="ownerDYNAMIC90d1921e5f510100a9ad2572f2b477fe^EQ" type="reference">
+            <choice/>
+        </element>
+    </element>
+</database>

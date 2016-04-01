@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_snc_donow.DoNowUtil</api_name>
+        <client_callable>false</client_callable>
+        <description>A collection of utilities to manage the DoNow logic</description>
+        <name>DoNowUtil</name>
+        <script><![CDATA[var DoNowUtil = Class.create();
+DoNowUtil.prototype = {
+	initialize: function() {
+	},
+	
+	/*
+	Description: 
+	Return: 
+	*/
+	getMyDefaultContext : function() {
+		
+		var gr = new GlideRecord("x_snc_donow_context");
+		gr.addQuery("owner", gs.getUserID());
+		gr.addQuery("my_default", true);
+		gr.query();
+		if (gr.next()) {
+			return gr.getValue('value');
+		}
+		
+		return;
+		
+	}, 
+	
+	type: 'DoNowUtil'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-02-07 17:27:51</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>fa6939ff6f51120029ac58754b3ee4e6</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>DoNowUtil</sys_name>
+        <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
+        <sys_update_name>sys_script_include_fa6939ff6f51120029ac58754b3ee4e6</sys_update_name>
+        <sys_updated_by>chris.maloy</sys_updated_by>
+        <sys_updated_on>2016-02-09 04:06:38</sys_updated_on>
+    </sys_script_include>
+</record_update>
