@@ -12,7 +12,7 @@
         <name>Create Action</name>
         <order>99</order>
         <reply_email/>
-        <required_roles>x_snc_donow_action_user</required_roles>
+        <required_roles/>
         <script><![CDATA[(function runAction(/*GlideRecord*/ current, /*GlideRecord*/ event, /*EmailWrapper*/ email, /*ScopedEmailLogger*/ logger, /*EmailClassifier*/ classifier) {
 	
 	var user = (new DoNowUtil()).getGTDUser(email.recipients);
@@ -35,7 +35,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>6bcf59f547a21200c380b6a0ec9a71ba</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>Create Action</sys_name>
         <sys_overrides/>
         <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
@@ -44,7 +44,7 @@
         <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
         <sys_update_name>sysevent_in_email_action_6bcf59f547a21200c380b6a0ec9a71ba</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2016-04-03 14:21:28</sys_updated_on>
+        <sys_updated_on>2016-04-30 03:02:55</sys_updated_on>
         <table>x_snc_donow_action</table>
         <template/>
         <type/>
