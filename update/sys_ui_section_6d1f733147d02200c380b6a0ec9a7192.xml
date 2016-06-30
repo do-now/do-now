@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_section caption="" section_id="6d1f733147d02200c380b6a0ec9a7192" sys_domain="global" table="x_snc_donow_action" version="3" view="Mobile">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>short_description</element>
+            <position>0</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-06-30 01:11:06</sys_created_on>
+            <sys_id>f51f733147d02200c380b6a0ec9a719d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_donow_action" sys_domain="global" view="097deee447221200c380b6a0ec9a7129">6d1f733147d02200c380b6a0ec9a7192</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-06-30 01:11:06</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>priority</element>
+            <position>1</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-06-30 01:11:06</sys_created_on>
+            <sys_id>791f733147d02200c380b6a0ec9a719d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_donow_action" sys_domain="global" view="097deee447221200c380b6a0ec9a7129">6d1f733147d02200c380b6a0ec9a7192</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-06-30 01:11:06</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>state</element>
+            <position>2</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-06-30 01:11:06</sys_created_on>
+            <sys_id>f91f733147d02200c380b6a0ec9a719d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_donow_action" sys_domain="global" view="097deee447221200c380b6a0ec9a7129">6d1f733147d02200c380b6a0ec9a7192</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-06-30 01:11:06</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>assigned_to</element>
+            <position>3</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-06-30 01:11:06</sys_created_on>
+            <sys_id>7d1f733147d02200c380b6a0ec9a719d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_donow_action" sys_domain="global" view="097deee447221200c380b6a0ec9a7129">6d1f733147d02200c380b6a0ec9a7192</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-06-30 01:11:06</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>context</element>
+            <position>4</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-06-30 01:11:06</sys_created_on>
+            <sys_id>fd1f733147d02200c380b6a0ec9a719d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_donow_action" sys_domain="global" view="097deee447221200c380b6a0ec9a7129">6d1f733147d02200c380b6a0ec9a7192</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-06-30 01:11:06</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>parent</element>
+            <position>5</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-06-30 01:11:06</sys_created_on>
+            <sys_id>711f733147d02200c380b6a0ec9a719e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_donow_action" sys_domain="global" view="097deee447221200c380b6a0ec9a7129">6d1f733147d02200c380b6a0ec9a7192</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-06-30 01:11:06</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>description</element>
+            <position>6</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-06-30 01:11:06</sys_created_on>
+            <sys_id>f11f733147d02200c380b6a0ec9a719e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_donow_action" sys_domain="global" view="097deee447221200c380b6a0ec9a7129">6d1f733147d02200c380b6a0ec9a7192</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-06-30 01:11:06</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>comments</element>
+            <position>7</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-06-30 01:11:06</sys_created_on>
+            <sys_id>751f733147d02200c380b6a0ec9a719e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_donow_action" sys_domain="global" view="097deee447221200c380b6a0ec9a7129">6d1f733147d02200c380b6a0ec9a7192</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-06-30 01:11:06</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>activity.xml</element>
+            <position>8</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-06-30 01:11:06</sys_created_on>
+            <sys_id>f51f733147d02200c380b6a0ec9a719e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter display_value="Activities (filtered)">444ea5c6bf310100e628555b3f0739d6</sys_ui_formatter>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_donow_action" sys_domain="global" view="097deee447221200c380b6a0ec9a7129">6d1f733147d02200c380b6a0ec9a7192</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-06-30 01:11:06</sys_updated_on>
+            <sys_user/>
+            <type>formatter</type>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_snc_donow_action</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-06-30 01:11:06</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>6d1f733147d02200c380b6a0ec9a7192</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_snc_donow_action</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
+            <sys_update_name>sys_ui_section_6d1f733147d02200c380b6a0ec9a7192</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-06-30 01:11:06</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Mobile" name="Mobile">097deee447221200c380b6a0ec9a7129</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>
