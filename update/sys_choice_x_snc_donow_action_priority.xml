@@ -6,7 +6,7 @@
             <element>priority</element>
             <hint/>
             <inactive>false</inactive>
-            <label>1 - Critical</label>
+            <label>Now</label>
             <language>en</language>
             <name>x_snc_donow_action</name>
             <sequence>0</sequence>
@@ -15,9 +15,9 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>ad1f733147d02200c380b6a0ec9a7199</sys_id>
-            <sys_mod_count>0</sys_mod_count>
+            <sys_mod_count>4</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2016-06-30 01:11:06</sys_updated_on>
+            <sys_updated_on>2016-07-09 04:20:24</sys_updated_on>
             <value>1</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
@@ -25,7 +25,7 @@
             <element>priority</element>
             <hint/>
             <inactive>false</inactive>
-            <label>2 - High</label>
+            <label>Next</label>
             <language>en</language>
             <name>x_snc_donow_action</name>
             <sequence>1</sequence>
@@ -34,9 +34,9 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>a91f733147d02200c380b6a0ec9a719a</sys_id>
-            <sys_mod_count>0</sys_mod_count>
+            <sys_mod_count>4</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2016-06-30 01:11:06</sys_updated_on>
+            <sys_updated_on>2016-07-09 04:20:24</sys_updated_on>
             <value>2</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
@@ -44,7 +44,7 @@
             <element>priority</element>
             <hint/>
             <inactive>false</inactive>
-            <label>3 - Moderate</label>
+            <label>Soon</label>
             <language>en</language>
             <name>x_snc_donow_action</name>
             <sequence>2</sequence>
@@ -53,9 +53,9 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>251f733147d02200c380b6a0ec9a719b</sys_id>
-            <sys_mod_count>0</sys_mod_count>
+            <sys_mod_count>3</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2016-06-30 01:11:06</sys_updated_on>
+            <sys_updated_on>2016-07-09 04:20:24</sys_updated_on>
             <value>3</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
@@ -63,7 +63,7 @@
             <element>priority</element>
             <hint/>
             <inactive>false</inactive>
-            <label>4 - Low</label>
+            <label>Later</label>
             <language>en</language>
             <name>x_snc_donow_action</name>
             <sequence>3</sequence>
@@ -72,9 +72,9 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>ad1f733147d02200c380b6a0ec9a719b</sys_id>
-            <sys_mod_count>0</sys_mod_count>
+            <sys_mod_count>4</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2016-06-30 01:11:06</sys_updated_on>
+            <sys_updated_on>2016-07-09 04:20:24</sys_updated_on>
             <value>4</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
@@ -82,7 +82,7 @@
             <element>priority</element>
             <hint/>
             <inactive>false</inactive>
-            <label>5 - Planning</label>
+            <label>Someday</label>
             <language>en</language>
             <name>x_snc_donow_action</name>
             <sequence>4</sequence>
@@ -91,10 +91,29 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>291f733147d02200c380b6a0ec9a719c</sys_id>
-            <sys_mod_count>0</sys_mod_count>
+            <sys_mod_count>4</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2016-06-30 01:11:06</sys_updated_on>
+            <sys_updated_on>2016-07-09 04:20:24</sys_updated_on>
             <value>5</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>priority</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Waiting</label>
+            <language>en</language>
+            <name>x_snc_donow_action</name>
+            <sequence>5</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-07-08 14:55:00</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>2868ccb047202200c380b6a0ec9a7126</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-07-09 04:20:24</sys_updated_on>
+            <value>6</value>
         </sys_choice>
         <sys_choice_set action="INSERT_OR_UPDATE">
             <element>priority</element>
