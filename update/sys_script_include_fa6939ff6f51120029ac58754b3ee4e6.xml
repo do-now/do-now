@@ -8,10 +8,11 @@
         <description>A collection of utilities to manage the DoNow logic</description>
         <name>DoNowUtil</name>
         <script><![CDATA[var DoNowUtil = Class.create();
-DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor, 
-	{
+DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
+{
 	re: /@("([^"]+)|(\w+))(?![^@]*@)/,
-
+	contextFound: false,
+	
 	/*
 	Description:
 	Return:
@@ -108,6 +109,8 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 		return null;
 	},
 	
+	/* 
+	*/
 	parseContext: function(subject, user) {
 		
 		var found = this.re.exec(subject);
@@ -126,13 +129,18 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 		var contextID = this.findContext(context);
 		if (contextID == null) {
 			contextID = this.getDefaultContextID(user);
+			this.foundContext = false;
+		} else {
+			this.foundContext = true;
 		}
 		return contextID;
 	},
 	
 	sanitizeSubject: function(subject) {
 		var sanitized =  subject.replace("Fwd: ", "").replace("Re: ", "").replace("FW: ", "");
-		sanitized = sanitized.replace(this.re, "");
+		if (this.foundCountext) {
+			sanitized = sanitized.replace(this.re, "");
+		}
 		return sanitized;
 	},
 	
@@ -143,7 +151,7 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_created_on>2016-02-07 17:27:51</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>fa6939ff6f51120029ac58754b3ee4e6</sys_id>
-        <sys_mod_count>32</sys_mod_count>
+        <sys_mod_count>34</sys_mod_count>
         <sys_name>DoNowUtil</sys_name>
         <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
         <sys_policy>read</sys_policy>
@@ -151,6 +159,6 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
         <sys_update_name>sys_script_include_fa6939ff6f51120029ac58754b3ee4e6</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2016-07-11 19:24:30</sys_updated_on>
+        <sys_updated_on>2016-07-11 21:18:44</sys_updated_on>
     </sys_script_include>
 </record_update>
