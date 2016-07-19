@@ -4,108 +4,134 @@
         <client_script><![CDATA[function($scope, spUtil, $http) {
   /* widget controller */
   var c = this;
-		
-	// this makes the UI watch the data tables and update on changes
-	spUtil.recordWatch($scope, "x_snc_donow_action", "", function(name, data) {
-		spUtil.update($scope);
-	});
 
-	//loop over the priority models and count how many are currently active
-	//the number of bootstrap columns for our swim lanes are 12/active columns
-	$scope.calculateColumnSize = function() {
-		var activePriorities = 0;
-		for (var i = 0; i < $scope.data.priorities.length; i++) {
-			if ($scope.data.priorities[i].model) {
-				activePriorities ++;
-			}
-		}
-		console.log("activePriorities = " + activePriorities);
-		console.log("columnSize = " + 12/activePriorities);
-		$scope.columnClass= "col-sm-"+Math.floor(12/activePriorities);
-	}
+    // this makes the UI watch the data tables and update on changes
+    spUtil.recordWatch($scope, "x_snc_donow_action", "", function(name, data) {
+        spUtil.update($scope);
+    });
 
-	
-	//Begin sortOptions
-	//This defines the callbacks for the drag handlers. It is passed to the 
-	//data-as-sortable directive in the view
-	$scope.sortOptions = {
+    //loop over the priority models and count how many are currently active
+    //the number of bootstrap columns for our swim lanes are 12/active columns
+    $scope.calculateColumnSize = function() {
+        var activePriorities = 0;
+        for (var i = 0; i < $scope.data.priorities.length; i++) {
+            if ($scope.data.priorities[i].model) {
+                activePriorities ++;
+            }
+        }
+        console.log("activePriorities = " + activePriorities);
+        console.log("columnSize = " + 12/activePriorities);
+        $scope.columnClass= "col-sm-"+Math.floor(12/activePriorities);
+    }
+
+    //Begin sortOptions
+    //This defines the callbacks for the drag handlers. It is passed to the
+    //data-as-sortable directive in the view
+    $scope.sortOptions = {
     itemMoved: function (event) {
-			var original_priority = event.source.sortableScope.element[0].id;
-			var destination_priority = event.dest.sortableScope.element[0].id;
-			var item_sys_id = event.source.itemScope.action.sys_id; 
-			console.log('From: ' + original_priority + " sys_id="+item_sys_id + " "+ event.source.itemScope.priority.value);
-			console.log('To: ' + destination_priority);  
-			$scope.writeAction(item_sys_id, {'priority':destination_priority});
-			$scope.reorderActions(event.dest.sortableScope.modelValue);
-			$scope.reorderActions(event.source.sortableScope.modelValue);					
-		},
-		
+            var original_priority = event.source.sortableScope.element[0].id;
+            var destination_priority = event.dest.sortableScope.element[0].id;
+            var item_sys_id = event.source.itemScope.action.sys_id;
+            console.log('From: ' + original_priority + " sys_id="+item_sys_id + " "+ event.source.itemScope.priority.value);
+            console.log('To: ' + destination_priority);
+            $scope.writeAction(item_sys_id, {'priority':destination_priority});
+            $scope.reorderActions(event.dest.sortableScope.modelValue);
+            $scope.reorderActions(event.source.sortableScope.modelValue);
+        },
+
     orderChanged: function (event) {
-			$scope.reorderActions(event.dest.sortableScope.modelValue);			
+            $scope.reorderActions(event.dest.sortableScope.modelValue);
     }
   };
-	//End sortOptions
-	
-	//the handler for clicks on the "Close" button
-	//Updates the data but also immediately removes this item from the model
-	$scope.closeAction = function(event, model) {
-		var action_sys_id = event.currentTarget.id;
-	  console.log("button clicked\n" + action_sys_id );
-		$scope.writeAction(action_sys_id, {'state': 3});
-		var index = $scope.findIndexInModel(action_sys_id, model);
-		console.log("index = " + index);
-		if (index != -1){
-			model.splice(index,1);
-		}
-	};
+    //End sortOptions
 
-	//loop over a model and rewrite the execution order based on the order in 
-	//the model. Count by 100s
-	$scope.reorderActions = function(model) {
-		var execution_order = 100;
-		for (var i = 0; i<resortArray.length; i++) {
-			$scope.writeAction(model[i].sys_id, {'execution_order': execution_order});
-			execution_order = execution_order + 100;
-		}		
-	};
+    //the handler for clicks on the "Close" button
+    //Updates the data but also immediately removes this item from the model
+    $scope.closeAction = function(event, model) {
+        var action_sys_id = event.currentTarget.id;
+      console.log("button clicked\n" + action_sys_id );
+        $scope.writeAction(action_sys_id, {'state': 3});
+        var index = $scope.findIndexInModel(action_sys_id, model);
+        console.log("index = " + index);
+        if (index != -1){
+            model.splice(index,1);
+        }
+    };
 
-	//User the Table API to put for a record of sys_id. Whatever JSON is passed 
-	//in as data, tht will be the update
-	$scope.writeAction = function(sys_id, data) {
-		$http({
-			method: 'PUT',
-			url: '/api/now/table/x_snc_donow_action/'+ sys_id,
-			headers: {'Content-Type' : 'application/json'},
-			data : data
-		});	
-	};	
-	
-	//find the index in the model that contains this sys_id
-	//Used in the closeAction handler where the ng-click event doesn't
-	//know where in the model this is happening but we do have sys_id
-	$scope.findIndexInModel = function(sys_id, model) {
-		var index = -1;
-		for (var i = 0; i < model.length; i++) {
-			if (sys_id == model[i].sys_id) {
-				index = i;
-			}
-		}
-		return index;
-	};
-	
-	//Define the data model for the checkboxes and swim lanes. Default to showing
-	//the Now column. If this is defined in server script, every time data changes 
-	//it reverts to defaults. Makes sense to do it here. 
-	$scope.data.priorities = [
-		{"name":"Now", "value":1, "model":true},
-		{"name":"Next", "value":2, "model":false},
-		{"name":"Soon", "value":3, "model":false},
-		{"name":"Later", "value":4, "model":false},
-		{"name":"Someday", "value":5, "model":false},
-		{"name":"Waiting", "value":6, "model":false}
-		];
+    //loop over a model and rewrite the execution order based on the order in
+    //the model. Count by 100s
+    $scope.reorderActions = function(model) {
+        var execution_order = 100;
+        for (var i = 0; i<model.length; i++) {
+            $scope.writeAction(model[i].sys_id, {'execution_order': execution_order});
+            execution_order = execution_order + 100;
+        }
+    };
 
-}	]]></client_script>
+    //User the Table API to put for a record of sys_id. Whatever JSON is passed
+    //in as data, tht will be the update
+    $scope.writeAction = function(sys_id, data) {
+        $http({
+            method: 'PUT',
+            url: '/api/now/table/x_snc_donow_action/'+ sys_id,
+            headers: {'Content-Type' : 'application/json'},
+            data : data
+        });
+    };
+
+    //find the index in the model that contains this sys_id
+    //Used in the closeAction handler where the ng-click event doesn't
+    //know where in the model this is happening but we do have sys_id
+    $scope.findIndexInModel = function(sys_id, model) {
+        var index = -1;
+        for (var i = 0; i < model.length; i++) {
+            if (sys_id == model[i].sys_id) {
+                index = i;
+            }
+        }
+        return index;
+    };
+
+    //Define the data model for the checkboxes and swim lanes. Default to showing
+    //the Now column. If this is defined in server script, every time data changes
+    //it reverts to defaults. Makes sense to do it here.
+    $scope.data.priorities = [
+        {"name":"Now", "value":1, "model":true},
+        {"name":"Next", "value":2, "model":false},
+        {"name":"Soon", "value":3, "model":false},
+        {"name":"Later", "value":4, "model":false},
+        {"name":"Someday", "value":5, "model":false},
+        {"name":"Waiting", "value":6, "model":false}
+        ];
+
+        $scope.contextModels={};
+        $scope.contexts = [];
+
+    //Initialize the context model from the Table API
+    $http({
+        method: 'GET',
+            url: '/api/now/table/x_snc_donow_context?sysparm_query=owner%3D'+ $scope.data.currentUserID,
+            headers: {'Content-Type' : 'application/json'}
+    }).success(function(data) {
+        // have to get this from the default SN JSON object,
+        // which wraps with result
+        var results = data.result;
+
+        for (var i = 0; i < results.length; i++) {
+            var context = {};
+            context.label = results[i].label;
+            context.value = results[i].value;
+            $scope.contexts.push(context);
+            $scope.contextModels[context.value] = true;
+        }
+        // building one to catch everything without a context
+        var empty_context = {"label":"None", "value":""};
+        $scope.contexts.push(empty_context);
+        $scope.contextModels[empty_context.value] = true;
+
+    }) ;
+
+}]]></client_script>
         <controller_as>c</controller_as>
         <css>a:link {
     color: blue;
@@ -132,6 +158,7 @@ a:visited {
         <script><![CDATA[(function() {
 
 	data.currentUser = gs.getUserDisplayName();
+	data.currentUserID = gs.getUserID();
 	data.actions = {};
 	for (var i = 1; i <=6; i++) {
 		data.actions[i] = [];
@@ -165,7 +192,7 @@ a:visited {
         <sys_created_on>2016-07-15 02:34:56</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>6780613e47a42200c380b6a0ec9a7198</sys_id>
-        <sys_mod_count>215</sys_mod_count>
+        <sys_mod_count>217</sys_mod_count>
         <sys_name>donow-review</sys_name>
         <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
         <sys_policy/>
@@ -173,20 +200,21 @@ a:visited {
         <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
         <sys_update_name>sp_widget_6780613e47a42200c380b6a0ec9a7198</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2016-07-18 03:55:19</sys_updated_on>
+        <sys_updated_on>2016-07-19 04:16:33</sys_updated_on>
         <template><![CDATA[<div>
   <div flex>
     <div class="md-display-1">DoNow Review for {{data.currentUser}}</div>
   <div layout="row">Show Priorities
      <md-checkbox ng-repeat="priority in c.data.priorities"  ng-model=priority.model ng-change="calculateColumnSize()" >{{priority.name}}</md-checkbox>
-    
     </div>
+  <div layout="row">Show Contexts
+     <md-checkbox  ng-repeat="context in contexts"  ng-model=contextModels[context.value] ng-change="calculateColumnSize()" >{{context.label}}</md-checkbox>
+  </div>
 
-    
   <md-content id="{{priority.value}}" class="sortable-container" data-as-sortable="sortOptions"  data-ng-model="c.data.actions[priority.value]" ng-repeat="priority in c.data.priorities"  class="md-padding" ng-if="priority.model" layout="column" ng-class="columnClass"  >
     <div class="md-title"  >{{priority.name}}</div>
-      <md-card id={{action.sys_id}}   class="sortable-item" data-as-sortable-item  ng-repeat="action in c.data.actions[priority.value]" >
-        <md-card-title data-as-sortable-item-handle> 
+      <md-card id={{action.sys_id}}   class="sortable-item" data-as-sortable-item  ng-repeat="action in c.data.actions[priority.value]"  ng-if="contextModels[action.context]">
+        <md-card-title data-as-sortable-item-handle>
           <md-card-title-text>
             <span class="md-headline"><a href="/nav_to.do?uri=x_snc_donow_action.do?sys_id={{action.sys_id}}" target="actionView"> {{action.short_description}}</a></span>
             <span class="md-subhead" >{{action.number}}</span>
@@ -198,8 +226,8 @@ a:visited {
         <md-card-actions layout="column" >
           <md-button id="{{action.sys_id}}" ng-click="closeAction($event, c.data.actions[priority.value])">Close </md-button>
         </md-card-actions>
-	</md-card>
-	</md-content>  
+    </md-card>
+    </md-content>
   </div>
 </div>]]></template>
     </sp_widget>
