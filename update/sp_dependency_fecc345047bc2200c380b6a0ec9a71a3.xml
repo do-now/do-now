@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_dependency">
+    <sp_dependency action="INSERT_OR_UPDATE">
+        <module>ngMaterial</module>
+        <name>ngMaterial</name>
+        <page_load>true</page_load>
+        <sys_class_name>sp_dependency</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-07-19 15:42:50</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>fecc345047bc2200c380b6a0ec9a71a3</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>ngMaterial</sys_name>
+        <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
+        <sys_update_name>sp_dependency_fecc345047bc2200c380b6a0ec9a71a3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-07-19 15:48:54</sys_updated_on>
+    </sp_dependency>
+</record_update>
