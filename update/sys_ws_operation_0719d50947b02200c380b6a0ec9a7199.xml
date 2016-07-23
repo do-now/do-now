@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl/>
+        <http_method>GET</http_method>
+        <name>getPriorities</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) 
+{
+	var returnArray = [];
+	var gr = new GlideRecord("sys_choice");
+	gr.addQuery("name", "x_snc_donow_action");
+	gr.addQuery("element", "priority");
+	gr.addActiveQuery();
+	gr.addQuery('language', 'en');
+	gr.orderBy('sequence');
+	gr.query();
+	while (gr.next()) {
+	   var priority = {};
+		priority.label = gr.getDisplayValue('label');
+		priority.value = gr.getValue('value');
+		returnArray.push(priority);
+	}
+
+	return returnArray;
+
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_snc_donow/donow/getPriorities</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/getPriorities</relative_path>
+        <request_example/>
+        <requires_acl_authorization>false</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-07-22 01:45:50</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>0719d50947b02200c380b6a0ec9a7199</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>getPriorities</sys_name>
+        <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
+        <sys_update_name>sys_ws_operation_0719d50947b02200c380b6a0ec9a7199</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-07-22 19:16:42</sys_updated_on>
+        <web_service_definition display_value="donow">1207550947b02200c380b6a0ec9a7104</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>
