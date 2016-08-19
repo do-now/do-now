@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script><![CDATA[function($scope, $http, $filter) {
+  /* widget controller */
+  var c = this;
+	
+	$scope.contexts = [];
+	$scope.inboxCount = $filter('filter')(c.data.actions, {context: ''}, true).length;
+	
+	$http({
+		method: 'GET',
+		url: 'api/x_snc_donow/donow/getContexts/' + c.data.userID
+	}).success(function(data) {
+		$scope.contexts = data.result;
+	});
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.dn-side {
+  background: none repeat scroll 0 0 #e5e8ef;
+  border-radius: 4px 0 0 4px; 
+  width: 75%;
+}
+
+.nav-top {
+  padding: 20px;
+  padding-left: 10px;
+  padding-top: 0px;
+}
+
+.btn-new {
+  background: none repeat scroll 0 0 #ff6c60;
+  color: #fff;
+  padding: 12px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.btn-new:hover {
+  background: none repeat scroll 0 0 #f5675c;
+  color: #fff;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>donow-nav</id>
+        <internal>false</internal>
+        <link/>
+        <name>DoNow Nav</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	
+	data.userID = gs.getUserID();
+	data.projects = getProjects();
+	data.actions = getActions();
+	
+	function getProjects() {
+		var gr = new GlideRecord('x_snc_donow_action');
+		gr.addQuery('assigned_to', gs.getUserID());
+		gr.addActiveQuery();
+		gr.addNullQuery('parent');
+		gr.query();
+		
+		var projects = [];
+		var project;
+		
+		while (gr.next()) {
+			project = {};
+			$sp.getRecordValues(project, gr, 'sys_id,short_description');
+			projects.push(project);
+		}
+		
+		return projects; 
+	}
+	
+	function getActions() {
+		var gr = new GlideRecord('x_snc_donow_action');
+		gr.addQuery('assigned_to', gs.getUserID());
+		gr.addActiveQuery();
+		gr.query();
+		
+		var actions = [];
+		var action;
+		
+		while (gr.next()) {
+			action = {};
+			$sp.getRecordValues(action, gr, 'sys_id,context,parent,short_description');
+			actions.push(action);
+		}
+		
+		return actions; 
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>josh.nerius</sys_created_by>
+        <sys_created_on>2016-08-01 20:47:33</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>972fb824138d6a009718b9b76144b0d7</sys_id>
+        <sys_mod_count>38</sys_mod_count>
+        <sys_name>DoNow Nav</sys_name>
+        <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
+        <sys_update_name>sp_widget_972fb824138d6a009718b9b76144b0d7</sys_update_name>
+        <sys_updated_by>josh.nerius</sys_updated_by>
+        <sys_updated_on>2016-08-04 17:18:37</sys_updated_on>
+        <template><![CDATA[<div>
+  <!-- your widget template -->
+  
+  <div class="nav-top">
+    <a href="#myModal" data-toggle="modal" title="New Action" class="btn btn-new">
+      New Action
+    </a>
+  </div>
+  
+  <aside class="donow-side">
+    <ul class="nav category-divider">
+      <li class="active">
+        <a href="#"><i class="fa fa-inbox"></i> Inbox <span class="label label-danger pull-right">{{inboxCount}}</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-calendar-o"></i> Due Now <span class="label label-danger pull-right">5</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-calendar"></i> Next 7 Days <span class="label label-danger pull-right">15</span>
+        </a>
+      </li>
+    </ul>
+    
+    <ul class="nav nav-pills nav-stacked labels-info category-divider">
+      <li><h4>Projects</h4></li>
+      <li ng-repeat="p in data.projects"><a href="#">{{p.short_description}}</a></li>
+    </ul>
+    
+    <ul class="nav nav-pills nav-stacked labels-info category-divider">
+      <li><h4>Contexts</h4></li>
+      <li ng-repeat="c in contexts"><a href="#">{{c.label}}</a></li>
+    </ul>
+  </aside>
+</div>]]></template>
+    </sp_widget>
+</record_update>

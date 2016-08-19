@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script/>
+        <controller_as>c</controller_as>
+        <css>.table-tasks {
+  border 1px solid #d3d3d3;
+  margin-bottom: 0;
+}
+
+.table-tasks tr td {
+  padding: 12px !important;
+}
+
+.table-tasks tr td:hover {
+  cursor: pointer;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>donow-tasks</id>
+        <internal>false</internal>
+        <link/>
+        <name>DoNow Tasks</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	
+	data.actions = [];
+	
+	var gr = new GlideRecord('x_snc_donow_action');
+	gr.query();
+	
+	var action
+	
+	while (gr.next()) {
+		action = {};
+		$sp.getRecordValues(action, gr, 'short_description,sys_created_on');
+		data.actions.push(action);
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>josh.nerius</sys_created_by>
+        <sys_created_on>2016-08-01 21:50:30</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>f8ad4d68138d6a009718b9b76144b09e</sys_id>
+        <sys_mod_count>25</sys_mod_count>
+        <sys_name>DoNow Tasks</sys_name>
+        <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
+        <sys_update_name>sp_widget_f8ad4d68138d6a009718b9b76144b09e</sys_update_name>
+        <sys_updated_by>josh.nerius</sys_updated_by>
+        <sys_updated_on>2016-08-01 23:07:30</sys_updated_on>
+        <template><![CDATA[<div>
+  <!-- your widget template -->
+  <table class="table table-tasks table-hover">
+    <tbody>
+      <tr ng-repeat="a in data.actions">
+        <td class="view-task dont-show">{{ a.short_description }}</td>
+        <td class="view-task">{{ a.sys_created_on }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>]]></template>
+    </sp_widget>
+</record_update>

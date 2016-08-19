@@ -102,7 +102,7 @@
             <sys_update_name>sys_ui_list_content_page_null</sys_update_name>
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2016-06-22 12:03:36</sys_updated_on>
-            <sys_user display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</sys_user>
+            <sys_user display_value="admin@example.com">6816f79cc0a8016401c5a33be04be441</sys_user>
             <view display_value="Default view" name="NULL">Default view</view>
             <view_name/>
         </sys_ui_list>

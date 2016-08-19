@@ -3,25 +3,25 @@
     <sp_page action="INSERT_OR_UPDATE">
         <css/>
         <hide_breadcrumbs>false</hide_breadcrumbs>
-        <id>donow_review</id>
+        <id>donow_home</id>
         <internal>false</internal>
         <public>false</public>
         <roles/>
-        <short_description>The page for the DoNow review board</short_description>
+        <short_description/>
         <sys_class_name>sp_page</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2016-07-16 03:36:14</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
-        <sys_id>65a9b2c747282200c380b6a0ec9a7123</sys_id>
+        <sys_created_by>josh.nerius</sys_created_by>
+        <sys_created_on>2016-08-01 20:43:08</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>bf2ebce0138d6a009718b9b76144b0ae</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name>donow_review</sys_name>
+        <sys_name>donow_home</sys_name>
         <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
-        <sys_update_name>sp_page_65a9b2c747282200c380b6a0ec9a7123</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2016-07-16 03:36:14</sys_updated_on>
-        <title>donow-review</title>
+        <sys_update_name>sp_page_bf2ebce0138d6a009718b9b76144b0ae</sys_update_name>
+        <sys_updated_by>josh.nerius</sys_updated_by>
+        <sys_updated_on>2016-08-01 20:43:08</sys_updated_on>
+        <title>DoNow Home</title>
     </sp_page>
 </record_update>
