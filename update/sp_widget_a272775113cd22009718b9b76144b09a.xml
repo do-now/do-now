@@ -31,7 +31,7 @@
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>josh.nerius</sys_created_by>
         <sys_created_on>2016-08-04 17:46:08</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>a272775113cd22009718b9b76144b09a</sys_id>
         <sys_mod_count>10</sys_mod_count>
         <sys_name>DoNow Edit</sys_name>

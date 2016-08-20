@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_list parent="" relationship="" sys_domain="global" table="x_snc_donow_action" version="2" view="Mobile">
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>number</element>
+            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="097deee447221200c380b6a0ec9a7129">982c094447d92200c380b6a0ec9a71e9</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-08-12 18:42:38</sys_created_on>
+            <sys_id>dc2c094447d92200c380b6a0ec9a71e9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-08-12 18:42:38</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>short_description</element>
+            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="097deee447221200c380b6a0ec9a7129">982c094447d92200c380b6a0ec9a71e9</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-08-12 18:42:38</sys_created_on>
+            <sys_id>502c094447d92200c380b6a0ec9a71ea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-08-12 18:42:38</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>priority</element>
+            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="097deee447221200c380b6a0ec9a7129">982c094447d92200c380b6a0ec9a71e9</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-08-12 18:42:38</sys_created_on>
+            <sys_id>d02c094447d92200c380b6a0ec9a71ea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-08-12 18:42:38</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>state</element>
+            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="097deee447221200c380b6a0ec9a7129">982c094447d92200c380b6a0ec9a71e9</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-08-12 18:42:38</sys_created_on>
+            <sys_id>542c094447d92200c380b6a0ec9a71ea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-08-12 18:42:38</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>assigned_to</element>
+            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="097deee447221200c380b6a0ec9a7129">982c094447d92200c380b6a0ec9a71e9</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>4</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-08-12 18:42:38</sys_created_on>
+            <sys_id>d42c094447d92200c380b6a0ec9a71ea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-08-12 18:42:38</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>context</element>
+            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="097deee447221200c380b6a0ec9a7129">982c094447d92200c380b6a0ec9a71e9</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>5</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-08-12 18:42:39</sys_created_on>
+            <sys_id>582c094447d92200c380b6a0ec9a71ea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-08-12 18:42:39</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>parent</element>
+            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="097deee447221200c380b6a0ec9a7129">982c094447d92200c380b6a0ec9a71e9</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>6</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-08-12 18:42:39</sys_created_on>
+            <sys_id>d82c094447d92200c380b6a0ec9a71ea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-08-12 18:42:39</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>description</element>
+            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="097deee447221200c380b6a0ec9a7129">982c094447d92200c380b6a0ec9a71e9</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>7</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-08-12 18:42:39</sys_created_on>
+            <sys_id>5c2c094447d92200c380b6a0ec9a71ea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-08-12 18:42:39</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>x_snc_donow_action</name>
+            <parent/>
+            <position/>
+            <relationship/>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-08-12 18:42:38</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>982c094447d92200c380b6a0ec9a71e9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_snc_donow_action</sys_name>
+            <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
+            <sys_update_name>sys_ui_list_x_snc_donow_action_Mobile</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-08-12 18:42:38</sys_updated_on>
+            <sys_user/>
+            <view display_value="Mobile" name="Mobile">097deee447221200c380b6a0ec9a7129</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>

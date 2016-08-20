@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script><![CDATA[function($scope, $http) {
+  /* widget controller */
+  var c = this;
+	
+	$scope.captureText = function(){
+		var text = $scope.inputText;
+	  
+		var lines = text.split("\n");
+
+
+		for (var i = 0; i<lines.length; i++) {
+			var line = lines[i];
+			if (line.length == 0) {
+				continue;
+			}
+			
+			console.log(line);
+			var data = {'userID':$scope.data.userID,
+								 'text': line};			
+			$http({
+         method: 'POST',
+            url: '/api/x_snc_donow/donow/createAction',
+            headers: {'Content-Type' : 'application/json'},
+            data : data
+        }).success(
+					function(returndata) {
+						console.log(returndata);
+					}								
+			);
+
+		}
+		
+	}
+	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>textarea{
+    height: 90%;
+    width: 80%;
+   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>donowcapture</id>
+        <internal>false</internal>
+        <link/>
+        <name>DoNow Capture</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	data.userID = gs.getUserID();
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-08-19 20:10:47</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>5433211647d16200c380b6a0ec9a71b4</sys_id>
+        <sys_mod_count>15</sys_mod_count>
+        <sys_name>DoNow Capture</sys_name>
+        <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
+        <sys_update_name>sp_widget_5433211647d16200c380b6a0ec9a71b4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-08-20 21:58:45</sys_updated_on>
+        <template><![CDATA[<div>
+<textarea ng-model="inputText" rows="10"  /> 
+  <button ng-click="captureText()">Create Actions</button>
+</div>]]></template>
+    </sp_widget>
+</record_update>

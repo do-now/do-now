@@ -2,7 +2,6 @@
 <record_update table="sp_page">
     <sp_page action="INSERT_OR_UPDATE">
         <css/>
-        <hide_breadcrumbs>false</hide_breadcrumbs>
         <id>donow_home</id>
         <internal>false</internal>
         <public>false</public>
@@ -11,7 +10,7 @@
         <sys_class_name>sp_page</sys_class_name>
         <sys_created_by>josh.nerius</sys_created_by>
         <sys_created_on>2016-08-01 20:43:08</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>bf2ebce0138d6a009718b9b76144b0ae</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>donow_home</sys_name>

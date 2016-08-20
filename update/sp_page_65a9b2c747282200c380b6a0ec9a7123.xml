@@ -2,7 +2,6 @@
 <record_update table="sp_page">
     <sp_page action="INSERT_OR_UPDATE">
         <css/>
-        <hide_breadcrumbs>false</hide_breadcrumbs>
         <id>donow_review</id>
         <internal>false</internal>
         <public>false</public>

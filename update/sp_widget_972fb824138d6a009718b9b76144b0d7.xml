@@ -102,7 +102,7 @@
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>josh.nerius</sys_created_by>
         <sys_created_on>2016-08-01 20:47:33</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>972fb824138d6a009718b9b76144b0d7</sys_id>
         <sys_mod_count>38</sys_mod_count>
         <sys_name>DoNow Nav</sys_name>
