@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_list parent="" relationship="" sys_domain="global" table="x_snc_donow_context" version="2" view="">
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>is_private</element>
+            <list_id display_value="x_snc_donow_context" element="NULL" name="x_snc_donow_context" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">54c4c4e847a96200c380b6a0ec9a71ff</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-08-26 13:03:27</sys_created_on>
+            <sys_id>98c4c4e847a96200c380b6a0ec9a71ff</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-08-26 13:03:27</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>label</element>
+            <list_id display_value="x_snc_donow_context" element="NULL" name="x_snc_donow_context" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">54c4c4e847a96200c380b6a0ec9a71ff</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-08-26 13:03:27</sys_created_on>
+            <sys_id>1cc4c4e847a96200c380b6a0ec9a71ff</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-08-26 13:03:27</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>my_default</element>
+            <list_id display_value="x_snc_donow_context" element="NULL" name="x_snc_donow_context" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">54c4c4e847a96200c380b6a0ec9a71ff</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-08-26 13:03:27</sys_created_on>
+            <sys_id>9cc4c4e847a96200c380b6a0ec9a71ff</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-08-26 13:03:27</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>owner</element>
+            <list_id display_value="x_snc_donow_context" element="NULL" name="x_snc_donow_context" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">54c4c4e847a96200c380b6a0ec9a71ff</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-08-26 13:03:27</sys_created_on>
+            <sys_id>10c408e847a96200c380b6a0ec9a7100</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-08-26 13:03:27</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>value</element>
+            <list_id display_value="x_snc_donow_context" element="NULL" name="x_snc_donow_context" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">54c4c4e847a96200c380b6a0ec9a71ff</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>4</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-08-26 13:03:27</sys_created_on>
+            <sys_id>90c408e847a96200c380b6a0ec9a7100</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-08-26 13:03:27</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>x_snc_donow_context</name>
+            <parent/>
+            <position/>
+            <relationship/>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2016-08-26 13:03:27</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>54c4c4e847a96200c380b6a0ec9a71ff</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_snc_donow_context</sys_name>
+            <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
+            <sys_update_name>sys_ui_list_x_snc_donow_context_null</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2016-08-26 13:03:27</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>
