@@ -11,10 +11,10 @@
 DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 {
 	tokenRE: /\+([^@]+)\@/,
-	contextRE: /\w@("([^"]+)|(\w+))(?![^@]*@)/,
-	priorityRE: /\w\!(\w+)(?![^!]*)\!/,
-	contextFound: false,
-	priorityFound: false,
+	contextRE: /@("([^"]+)|(\w+))(?![^@]*@)/,
+	priorityRE: /\s\!(\w*)(?![^!]*\!)/,
+	foundContext: false,
+	foundPriority: false,
 	
 	/*
 	Description:
@@ -105,6 +105,19 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 		}
 		return null;
 	},
+
+	findPriority: function(priorityName) {
+		var gr = new GlideRecord("sys_choice");
+		gr.addQuery("name", "x_snc_donow_action");
+		gr.addQuery("label", priorityName);
+		gr.query();
+		if (gr.next()) {
+			gs.debug("In findPriority, priorityName =" +priorityName+ " and value= "+gr.getValue('value') );
+			return gr.getValue('value');
+		}
+		return null;
+	},
+	
 	
 	/*
  	*/
@@ -121,6 +134,8 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 			} else if (unquoted_context != null) {
 				context = unquoted_context;
 			}
+			gs.debug("In parseContext found branch for" +subject+ ": quoted_context = "+quoted_context +" unquoted_context = "+unquoted_context + " context = " + context );			
+
 			// doing this to return null if there is no such context
 			// with this string in DB, IE there is a twitter handle
 			//but no real context in the subject
@@ -141,8 +156,36 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 		if (this.foundContext) {
 			sanitized = sanitized.replace(this.contextRE, "");
 		}
+		if (this.foundPriority) {
+			sanitized = sanitized.replace(this.priorityRE, "");
+		}
+
 		return sanitized;
 	},
+	
+	parsePriority: function(subject) {
+		var priorityID = null;
+		var found = this.priorityRE.exec(subject);
+		if (found) {
+			var length = found.length;
+			var priority = null;
+			priority = found[1]; 
+			gs.debug("in parsePriority - regex found "+ priority);
+
+			// doing this to return null if there is no such context
+			// with this string in DB, IE there is a twitter handle
+			//but no real context in the subject
+			priorityID = this.findPriority(priority);
+		}
+		if (priorityID == null) {
+			this.foundPriority = false;
+		} else {
+			this.foundPriority = true;
+		}
+		
+		return priorityID;
+	},
+
 	
 	type: 'DoNowUtil'
 });]]></script>
@@ -151,7 +194,7 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_created_on>2016-02-07 17:27:51</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>fa6939ff6f51120029ac58754b3ee4e6</sys_id>
-        <sys_mod_count>41</sys_mod_count>
+        <sys_mod_count>50</sys_mod_count>
         <sys_name>DoNowUtil</sys_name>
         <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
         <sys_policy>read</sys_policy>
@@ -159,6 +202,6 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
         <sys_update_name>sys_script_include_fa6939ff6f51120029ac58754b3ee4e6</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2016-08-26 14:11:24</sys_updated_on>
+        <sys_updated_on>2016-09-16 21:19:46</sys_updated_on>
     </sys_script_include>
 </record_update>
