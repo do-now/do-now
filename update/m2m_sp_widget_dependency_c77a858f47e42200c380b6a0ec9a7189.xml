@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update table="m2m_sp_widget_dependency">
     <m2m_sp_widget_dependency action="INSERT_OR_UPDATE">
-        <sp_dependency display_value="ng-sortable">660c4324cb31120000f8d856634c9cb8</sp_dependency>
+        <sp_dependency display_value="">660c4324cb31120000f8d856634c9cb8</sp_dependency>
         <sp_widget display_value="donow-review">6780613e47a42200c380b6a0ec9a7198</sp_widget>
         <sys_class_name>m2m_sp_widget_dependency</sys_class_name>
         <sys_created_by>admin</sys_created_by>

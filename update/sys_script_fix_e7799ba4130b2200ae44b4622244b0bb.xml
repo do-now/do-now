@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <before>false</before>
+        <description>Make patches and updates after the app is loaded</description>
+        <flush_cache>true</flush_cache>
+        <name>DoNow Fix Script</name>
+        <run_once>true</run_once>
+        <script><![CDATA[/*
+ * Add properties to the global scope
+ *
+ */
+(function () {
+	var propList = [
+	{
+		'suffix' : null,
+		'name' : 'glide.ui.x_snc_donow_action_activity.fields',
+		'description' : 'Activity formatter fields for DoNow Action form',
+		'type' : 'string',
+		'value' : 'assigned_to,context,state,priority,comments,*Email*,*Attachments*'
+	}
+	];
+	
+	for (var i = 0; i < propList.length; i++) {
+		var p = new GlideRecord('sys_properties');
+		p.newRecord();
+		p.setsuffix   = propList[i].suffix;
+		p.name        = propList[i].name;
+		p.description = propList[i].description;
+		p.type        = propList[i].type;
+		p.value       = propList[i].value;
+		p.insert();
+		gs.log('DoNow Fix Script: Added property: ' + p.name + '=' + p.value);
+	}
+})();
+]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-11-09 18:08:33</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>e7799ba4130b2200ae44b4622244b0bb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>DoNow Fix Script</sys_name>
+        <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
+        <sys_update_name>sys_script_fix_e7799ba4130b2200ae44b4622244b0bb</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-11-09 18:08:33</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+</record_update>
