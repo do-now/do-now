@@ -4,7 +4,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>number</element>
-            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="6eb3a7cb139122001098b5f12244b0f8">982c094447d92200c380b6a0ec9a71e9</list_id>
+            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="74408c9f13572200ae44b4622244b022">982c094447d92200c380b6a0ec9a71e9</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
@@ -19,7 +19,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>short_description</element>
-            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="6eb3a7cb139122001098b5f12244b0f8">982c094447d92200c380b6a0ec9a71e9</list_id>
+            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="74408c9f13572200ae44b4622244b022">982c094447d92200c380b6a0ec9a71e9</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>1</position>
@@ -34,7 +34,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>priority</element>
-            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="6eb3a7cb139122001098b5f12244b0f8">982c094447d92200c380b6a0ec9a71e9</list_id>
+            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="74408c9f13572200ae44b4622244b022">982c094447d92200c380b6a0ec9a71e9</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>2</position>
@@ -49,7 +49,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>state</element>
-            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="6eb3a7cb139122001098b5f12244b0f8">982c094447d92200c380b6a0ec9a71e9</list_id>
+            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="74408c9f13572200ae44b4622244b022">982c094447d92200c380b6a0ec9a71e9</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>3</position>
@@ -64,7 +64,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>assigned_to</element>
-            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="6eb3a7cb139122001098b5f12244b0f8">982c094447d92200c380b6a0ec9a71e9</list_id>
+            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="74408c9f13572200ae44b4622244b022">982c094447d92200c380b6a0ec9a71e9</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>4</position>
@@ -79,7 +79,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>context</element>
-            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="6eb3a7cb139122001098b5f12244b0f8">982c094447d92200c380b6a0ec9a71e9</list_id>
+            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="74408c9f13572200ae44b4622244b022">982c094447d92200c380b6a0ec9a71e9</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>5</position>
@@ -94,7 +94,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>parent</element>
-            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="6eb3a7cb139122001098b5f12244b0f8">982c094447d92200c380b6a0ec9a71e9</list_id>
+            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="74408c9f13572200ae44b4622244b022">982c094447d92200c380b6a0ec9a71e9</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>6</position>
@@ -109,7 +109,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>description</element>
-            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="6eb3a7cb139122001098b5f12244b0f8">982c094447d92200c380b6a0ec9a71e9</list_id>
+            <list_id display_value="x_snc_donow_action" element="NULL" name="x_snc_donow_action" parent="NULL" relationship="NULL" sys_domain="global" view="74408c9f13572200ae44b4622244b022">982c094447d92200c380b6a0ec9a71e9</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>7</position>
@@ -148,7 +148,7 @@
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2016-08-12 18:42:38</sys_updated_on>
             <sys_user/>
-            <view display_value="Mobile" name="Mobile">6eb3a7cb139122001098b5f12244b0f8</view>
+            <view display_value="Mobile" name="Mobile">74408c9f13572200ae44b4622244b022</view>
             <view_name/>
         </sys_ui_list>
     </sys_ui_list>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script><![CDATA[function ($scope) {
+	$scope.remove = function (scope) {
+		scope.remove();
+	};
+
+	$scope.showInfo = function(scope) {
+
+	};
+
+	$scope.toggle = function (scope) {
+		scope.toggle();
+	};
+
+	$scope.moveLastToTheBeginning = function () {
+		var a = $scope.data.pop();
+		$scope.data.splice(0, 0, a);
+	};
+
+	$scope.newSubItem = function (scope) {
+		var nodeData = scope.$modelValue;
+		nodeData.nodes.push({
+			id: -1,
+			title: 'New Task',
+			active: true,
+			nodes: []
+		});
+	};
+
+	$scope.collapseAll = function () {
+		$scope.$broadcast('angular-ui-tree:collapse-all');
+	};
+
+	$scope.expandAll = function () {
+		$scope.$broadcast('angular-ui-tree:expand-all');
+	};
+
+	$scope.open = function(item){
+		if ($scope.isOpen(item)){
+			$scope.opened = undefined;
+		} else {
+			$scope.opened = item;
+//				$scope.server.get({
+//				action_name : "get_action",
+//				actionID : item.id
+//			}).then(function(response) {
+//				$scope.data.action = response.data.action;
+//			});
+
+		}        
+	};
+
+	$scope.isOpen = function(item){
+		return $scope.opened === item;
+	};
+
+	$scope.anyItemOpen = function() {
+		return $scope.opened !== undefined;
+	};
+
+	$scope.close = function() {
+		$scope.opened = undefined;
+	};
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>ol {
+  list-style-type: none;
+}
+
+.node-disabled {
+  background-color: #ccc;
+}
+
+.open-action {
+  position : fixed;
+  top : 50;
+  border : 1px solid #000;
+}
+
+.btn {
+  margin-right: 8px;
+	color:#fff;
+}
+
+.angular-ui-tree-handle {
+  background: #f8faff;
+  border: 1px solid #dae2ea;
+  color: #7c9eb2;
+  padding: 10px 10px;
+}
+
+.angular-ui-tree-handle:hover {
+  color: #438eb9;
+  background: #f4f6f7;
+  border-color: #dce2e8;
+}
+
+.angular-ui-tree-placeholder {
+  background: #f0f9ff;
+  border: 2px dashed #bed2db;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+tr.angular-ui-tree-empty {
+  height:100px
+}
+
+.group-title {
+  background-color: #687074 !important;
+  color: #FFF !important;
+}
+
+
+/* --- Tree --- */
+.tree-node {
+  border: 1px solid #dae2ea;
+  background: #f8faff;
+  color: #7c9eb2;
+}
+
+.nodrop {
+  background-color: #f2dede;
+}
+
+.tree-node-content {
+  margin: 10px;
+}
+.tree-handle {
+  padding: 10px;
+  background: #428bca;
+  color: #FFF;
+  margin-right: 10px;
+}
+
+.angular-ui-tree-handle:hover {
+}
+
+.angular-ui-tree-placeholder {
+  background: #f0f9ff;
+  border: 2px dashed #bed2db;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>donow-outline</id>
+        <internal>false</internal>
+        <link/>
+        <name>donow-outline</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	/* populate the 'data' object */
+	/* e.g., data.table = $sp.getValue('table'); */
+/*
+	console.log('Input action_name=' + input.action_name);
+	if (input.action_name == 'get_action') {
+		var actionID = input.actionID;
+		var actionGR = new GlideRecord('x_snc_donow_action');
+		if (actionGR.get()) {
+			data.action = actionGR;
+		}
+	} else {
+*/
+		data.userName = gs.getUserDisplayName();
+		var dnu = new DoNowUtil();
+		data.actions = dnu.getUserActionHierarchy();
+//	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2016-12-05 20:25:19</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>e172b90d13a722001098b5f12244b03b</sys_id>
+        <sys_mod_count>54</sys_mod_count>
+        <sys_name>donow-outline</sys_name>
+        <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
+        <sys_update_name>sp_widget_e172b90d13a722001098b5f12244b03b</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2016-12-20 17:01:05</sys_updated_on>
+        <template><![CDATA[<!-- Nested node template -->
+<script type="text/ng-template" id="nodes_renderer.html">
+  <div ui-tree-handle class="tree-node tree-node-content" ng-class="{'node-disabled' : node.active}">
+    <a class="btn btn-success btn-xs" ng-if="node.nodes && node.nodes.length > 0" data-nodrag ng-click="toggle(this)"><span
+        class="glyphicon"
+        ng-class="{
+          'glyphicon-chevron-right': collapsed,
+          'glyphicon-chevron-down': !collapsed
+        }"></span></a>
+    {{node.title}}
+    <a class="pull-right btn btn-info btn-xs" data-nodrag ng-click="open(node)">
+    	<span class="glyphicon glyphicon-info-sign"></span></a>
+    <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-if="node.active" ng-click="newSubItem(this)" style="margin-right: 8px;">
+   		<span class="glyphicon glyphicon-plus"></span></a>
+    <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-if="node.active" ng-click="remove(this)">
+    	<span class="glyphicon glyphicon-ok"></span></a>
+  </div>
+  <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+    <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
+  </li>
+  </ol>
+</script>
+
+<div class="row">
+  <div class="col-sm-12">
+    <h3>DoNow: {{data.userName}}</h3>
+
+    <button class="btn btn-primary" ng-click="expandAll()">Expand all</button>
+    <button class="btn btn-success" ng-click="collapseAll()">Collapse all</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div ui-tree id="tree-root">
+      <ol ui-tree-nodes ng-model="data.actions">
+        <li ng-repeat="node in data.actions" ui-tree-node ng-include="'nodes_renderer.html'"></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <ng-switch on="anyItemOpen()">
+      <div ng-switch-when="true">
+        <p class="open-action">
+          Task: {{opened.title}}<br />
+          Parent: {{opened.state}}<br />
+          Active: {{opened.active}}<br />
+          <a ng-click="close()">Close</a>
+        </p>
+      </div>
+    </ng-switch>   
+  </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

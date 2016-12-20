@@ -38,7 +38,7 @@
         <sys_class_name>sys_script_fix</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2016-11-09 18:08:33</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>e7799ba4130b2200ae44b4622244b0bb</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>DoNow Fix Script</sys_name>

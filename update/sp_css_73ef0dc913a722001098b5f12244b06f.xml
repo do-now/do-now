@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_css">
+    <sp_css action="INSERT_OR_UPDATE">
+        <css>.angular-ui-tree {&#13;
+}&#13;
+&#13;
+.angular-ui-tree-empty {&#13;
+    border: 1px dashed #bbb;&#13;
+    min-height: 100px;&#13;
+    background-color: #e5e5e5;&#13;
+    background-image: -webkit-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff), -webkit-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);&#13;
+    background-image: -moz-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff), -moz-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);&#13;
+    background-image: linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff), linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);&#13;
+    background-size: 60px 60px;&#13;
+    background-position: 0 0, 30px 30px;&#13;
+    pointer-events: none;&#13;
+}&#13;
+&#13;
+.angular-ui-tree-nodes {&#13;
+    position: relative;&#13;
+    margin: 0;&#13;
+    padding: 0;&#13;
+    list-style: none;&#13;
+}&#13;
+&#13;
+.angular-ui-tree-nodes .angular-ui-tree-nodes {&#13;
+    padding-left: 20px;&#13;
+}&#13;
+&#13;
+.angular-ui-tree-node, .angular-ui-tree-placeholder {&#13;
+    position: relative;&#13;
+    margin: 0;&#13;
+    padding: 0;&#13;
+    min-height: 20px;&#13;
+    line-height: 20px;&#13;
+}&#13;
+&#13;
+.angular-ui-tree-hidden {&#13;
+    display: none;&#13;
+}&#13;
+&#13;
+.angular-ui-tree-placeholder {&#13;
+    margin: 5px 0;&#13;
+    padding: 0;&#13;
+    min-height: 30px;&#13;
+}&#13;
+&#13;
+.angular-ui-tree-handle {&#13;
+    cursor: move;&#13;
+    text-decoration: none;&#13;
+    font-weight: bold;&#13;
+    -webkit-box-sizing: border-box;&#13;
+    -moz-box-sizing: border-box;&#13;
+    box-sizing: border-box;&#13;
+    min-height: 20px;&#13;
+    line-height: 20px;&#13;
+}&#13;
+&#13;
+.angular-ui-tree-drag {&#13;
+    position: absolute;&#13;
+    pointer-events: none;&#13;
+    z-index: 999;&#13;
+    opacity: .8;&#13;
+}&#13;
+</css>
+        <name>angular-ui-tree.css</name>
+        <sys_class_name>sp_css</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2016-12-05 17:54:45</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>73ef0dc913a722001098b5f12244b06f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>angular-ui-tree.css</sys_name>
+        <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
+        <sys_update_name>sp_css_73ef0dc913a722001098b5f12244b06f</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2016-12-05 17:54:45</sys_updated_on>
+    </sp_css>
+</record_update>

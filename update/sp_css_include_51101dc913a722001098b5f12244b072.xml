@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_css_include">
+    <sp_css_include action="INSERT_OR_UPDATE">
+        <name>angular-ui-tree-min.css</name>
+        <source>local</source>
+        <sp_css display_value="angular-ui-tree-min.css">9f00d98913a722001098b5f12244b02a</sp_css>
+        <sys_class_name>sp_css_include</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2016-12-05 17:55:07</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>51101dc913a722001098b5f12244b072</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>angular-ui-tree-min.css</sys_name>
+        <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
+        <sys_update_name>sp_css_include_51101dc913a722001098b5f12244b072</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2016-12-05 17:55:07</sys_updated_on>
+        <url/>
+    </sp_css_include>
+</record_update>

@@ -68,12 +68,11 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 		
 	},
 	
-	
 	getGTDUser: function(emailAddress) {
 		var token = null;
 		var found = this.tokenRE.exec(emailAddress);
 		if (found) {
-			token = found[1];		
+			token = found[1];
 			gs.debug("Entering getGTDUers, emailAddress=" +emailAddress);
 			gs.debug("token=" +token);
 			var gr = new GlideRecord('x_snc_donow_email_token');
@@ -84,7 +83,7 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 				return gr.getValue('user');
 			}
 		}
-
+		
 		return null;
 	},
 	
@@ -105,7 +104,7 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 		}
 		return null;
 	},
-
+	
 	findPriority: function(priorityName) {
 		var gr = new GlideRecord("sys_choice");
 		gr.addQuery("name", "x_snc_donow_action");
@@ -134,8 +133,8 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 			} else if (unquoted_context != null) {
 				context = unquoted_context;
 			}
-			gs.debug("In parseContext found branch for" +subject+ ": quoted_context = "+quoted_context +" unquoted_context = "+unquoted_context + " context = " + context );			
-
+			gs.debug("In parseContext found branch for" +subject+ ": quoted_context = "+quoted_context +" unquoted_context = "+unquoted_context + " context = " + context );
+			
 			// doing this to return null if there is no such context
 			// with this string in DB, IE there is a twitter handle
 			//but no real context in the subject
@@ -159,7 +158,7 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 		if (this.foundPriority) {
 			sanitized = sanitized.replace(this.priorityRE, "");
 		}
-
+		
 		return sanitized;
 	},
 	
@@ -169,9 +168,9 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 		if (found) {
 			var length = found.length;
 			var priority = null;
-			priority = found[1]; 
+			priority = found[1];
 			gs.debug("in parsePriority - regex found "+ priority);
-
+			
 			// doing this to return null if there is no such context
 			// with this string in DB, IE there is a twitter handle
 			//but no real context in the subject
@@ -185,23 +184,201 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 		
 		return priorityID;
 	},
-
 	
+	/*
+ 	 * getUserActionHierarchy - get a list of action records in a hierarchical related order
+ 	 *
+ 	 * @params none
+ 	 * @returns array of objects describing each record
+ 	 *
+ 	 */
+	getUserActionHierarchy : function() {
+		var userID = gs.getUserID();
+		var list = [];
+		var archiveDays = this.getUserPreference('donow.archive.days', 7);
+		var queryString = 'active=true^' +
+			'assigned_to=' + userID + '^OR' +
+			'opened_by=' + userID + '^NQ' +
+			'active=false^' +
+			'assigned_to=' + userID + '^OR' +
+			'opened_by=' + userID + '^' +
+			'closed_atRELATIVEGE@dayofweek@ago@' + archiveDays;
+		
+		// One GlideRecord query to build the array - more memory, but faster (fewer DB hits)
+		var task = new GlideRecord('task');
+		task.addEncodedQuery(queryString);
+		task.orderBy('execution_order');
+		task.query();
+		gs.debug('queryString=' + queryString);
+		gs.debug(task.getRowCount() + ' records read');
+		
+		while (task.next()) {
+			var obj = {};
+			obj.id = task.getValue('sys_id');
+				
+			obj.parent = task.getValue('parent');
+			obj.title = task.getValue('number') + ': ' + task.getValue('short_description');
+			// obj.title = task.number + ': ' + task.getValue('short_description');
+			// obj.order = task.getValue('execution_order');
+			// obj.short_description = task.getValue('short_description');
+			// obj.number = task.getValue('number');
+			// obj.sys_id = task.getValue('sys_id');
+			obj.parentNumber = task.parent.number + ': ' + task.parent.short_description;
+			obj.active = task.getValue('active') == 1;
+			list.push(obj);
+		}
+			
+		var orderList = this._buildTreeFromArray(list);
+		// gs.debug('orderList=' + JSON.stringify(orderList, null, 2));
+			
+		return orderList;
+	},
+	
+	/*
+	 * _makeTitleString - trim the string if too long
+	 *
+	 * @param str - string to be formatted
+	 * @param depth - indentation level depth
+	 * @return - cleaned up string
+	 *
+	 */
+	_makeTitleString : function(str, depth) {
+		
+		var answer = str;
+		var maxlen = 45 - ((depth - 1) * 10);
+		if (maxlen > 0 && str.length > maxlen) {
+			answer = str.substring(0, maxlen) + '...';
+		}
+		
+		return answer;
+	},
+		
+	/*
+	 * _buildTreeFromArray - take an array and connect the children as sub-arrays
+	 *
+ 	 * @param arr - array of simple objects (parent field must point to id of another record)
+ 	 * @returns structured array of objects
+ 	 *
+ 	 */
+	_buildTreeFromArray : function(arr) {
+		
+		var objList = [];
+		
+		for (i = 0; i < arr.length; i++) {
+			
+			// If this is a top level task, find all children
+			if (!arr[i].parent) {
+				arr[i].title = this._makeTitleString(arr[i].title, 1);
+				arr[i].nodes = this._getChildren(arr[i], arr, 0);
+				objList.push(arr[i]);
+			}
+		}
+		
+		return objList;
+	},
+		
+	/*
+	 * _getChildren - find all records in the list where the parent field points to 'top'
+	 *                Works recursively through the tree.
+	 *
+ 	 * @param top - the parent being matched against
+ 	 * @param list - list of all records
+ 	 * @param level - used for debugging only
+ 	 * @returns array of objects including, and belonging to 'top'
+ 	 *
+ 	 */
+	_getChildren : function(top, list, level) {
+		
+		var answer = [];
+		++level;
+		gs.debug('level=' + level + ' top.title=' + top.title);
+		for (var i = 0; i < list.length; i++) {
+			var obj = list[i];
+			
+			if (obj.parent == top.id) {
+				// gs.debug('  obj.number=' + obj.number);
+				obj.nodes = this._getChildren(obj, list, level);
+				// gs.debug('     nodes=' + JSON.stringify(answer.nodes, null, 2));
+				obj.title = this._makeTitleString(obj.title, level);
+				gs.debug('    _makeTitleString(): obj=' + JSON.stringify(obj, null, 2));
+				answer.push(obj);
+			}
+		}
+			
+		// gs.debug('   answer=' + JSON.stringify(answer, null, 2));
+		return answer;
+	},
+	
+	/*
+	 * getUserPreference - retrieve a user preference from the sys_user_preference table
+	 *                     If the user doesn't have one, check if there is a system definition
+	 *                     If neither are found, use the defaultValue parameter
+	 *
+	 * @param name - string value of the name of the preference we're looking for
+	 * @param defaultValue - what to return of a user or system pref is not found
+	 * @returns typed value of int/string/reference/boolean
+	 *
+	 */
+	getUserPreference : function(name, defaultValue) {
+		
+		// first check if there is a user specific one
+		var userID = gs.getUserID();
+		var answer = defaultValue;
+		var type = 'string';
+		var up = new GlideRecord('sys_user_preference');
+		
+		up.addQuery('name', name);
+		up.addQuery('user', userID);
+		up.query();
+		
+		if (up.next()) {
+			answer = up.getValue('value');
+			type = up.getValue('type');
+			
+		// Next check if there is a system specific one
+		} else {
+			var sp = new GlideRecord('sys_user_preference');
+		
+			sp.addQuery('name', name);
+			sp.addQuery('system', true);
+			sp.query();
+			
+			if (sp.next()) {
+				answer = sp.getValue('value');
+				type = sp.getValue('type');
+			}
+		}
+		
+		switch (type) {
+			case 'integer':
+				answer = parseInt(answer, 10);
+				break;
+			case 'boolean':
+				answer = (answer == 'true');
+				break;
+			case 'reference':
+			case 'string':
+				break;
+		}
+
+		return answer;
+	},
+		
 	type: 'DoNowUtil'
 });]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2016-02-07 17:27:51</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_id>fa6939ff6f51120029ac58754b3ee4e6</sys_id>
-        <sys_mod_count>50</sys_mod_count>
+        <sys_mod_count>80</sys_mod_count>
         <sys_name>DoNowUtil</sys_name>
         <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
         <sys_policy>read</sys_policy>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
         <sys_update_name>sys_script_include_fa6939ff6f51120029ac58754b3ee4e6</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2016-09-16 21:19:46</sys_updated_on>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2016-12-15 00:09:29</sys_updated_on>
     </sys_script_include>
 </record_update>

@@ -7,7 +7,7 @@
         <sys_class_name>sys_ui_style</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2016-11-09 17:10:16</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>714c43ac13c72200ae44b4622244b0d0</sys_id>
         <sys_mod_count>2</sys_mod_count>
         <sys_name>x_snc_donow_action</sys_name>

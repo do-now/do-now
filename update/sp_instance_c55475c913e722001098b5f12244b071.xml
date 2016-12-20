@@ -11,25 +11,25 @@
         <roles/>
         <short_description/>
         <size>md</size>
-        <sp_column display_value="1">72c9b2c747282200c380b6a0ec9a715c</sp_column>
-        <sp_widget display_value="donow-review">6780613e47a42200c380b6a0ec9a7198</sp_widget>
+        <sp_column display_value="1">4044310d13e722001098b5f12244b077</sp_column>
+        <sp_widget display_value="donow-outline">e172b90d13a722001098b5f12244b03b</sp_widget>
         <sys_class_name>sp_instance</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2016-07-16 03:36:34</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
-        <sys_id>68d9b2c747282200c380b6a0ec9a7110</sys_id>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2016-12-05 20:33:29</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>c55475c913e722001098b5f12244b071</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name/>
         <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
-        <sys_update_name>sp_instance_68d9b2c747282200c380b6a0ec9a7110</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2016-07-16 03:36:34</sys_updated_on>
+        <sys_update_name>sp_instance_c55475c913e722001098b5f12244b071</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2016-12-05 20:33:29</sys_updated_on>
         <title/>
         <url/>
         <widget_parameters/>
     </sp_instance>
-    <sys_translated_text action="delete_multiple" query="documentkey=68d9b2c747282200c380b6a0ec9a7110"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=c55475c913e722001098b5f12244b071"/>
 </record_update>
