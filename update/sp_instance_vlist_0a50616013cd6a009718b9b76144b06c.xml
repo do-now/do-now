@@ -14,7 +14,6 @@
         <order>0</order>
         <order_by/>
         <order_direction>asc</order_direction>
-        <roles/>
         <short_description/>
         <size>md</size>
         <sp_column display_value="">d20fb024138d6a009718b9b76144b04f</sp_column>
@@ -68,5 +67,4 @@
 	}
 }]]></widget_parameters>
     </sp_instance_vlist>
-    <sys_translated_text action="delete_multiple" query="documentkey=0a50616013cd6a009718b9b76144b06c"/>
 </record_update>

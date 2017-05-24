@@ -2,7 +2,6 @@
 <record_update table="sp_page">
     <sp_page action="INSERT_OR_UPDATE">
         <css/>
-        <draft>false</draft>
         <id>donow_review</id>
         <internal>false</internal>
         <public>false</public>
@@ -24,5 +23,4 @@
         <sys_updated_on>2016-07-16 03:36:14</sys_updated_on>
         <title>donow-review</title>
     </sp_page>
-    <sys_translated_text action="delete_multiple" query="documentkey=65a9b2c747282200c380b6a0ec9a7123"/>
 </record_update>

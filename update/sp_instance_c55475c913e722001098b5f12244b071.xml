@@ -8,7 +8,6 @@
         <glyph/>
         <id/>
         <order>1</order>
-        <roles/>
         <short_description/>
         <size>md</size>
         <sp_column display_value="1">4044310d13e722001098b5f12244b077</sp_column>
@@ -16,7 +15,7 @@
         <sys_class_name>sp_instance</sys_class_name>
         <sys_created_by>chuck.tomasi</sys_created_by>
         <sys_created_on>2016-12-05 20:33:29</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>c55475c913e722001098b5f12244b071</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name/>
@@ -31,5 +30,4 @@
         <url/>
         <widget_parameters/>
     </sp_instance>
-    <sys_translated_text action="delete_multiple" query="documentkey=c55475c913e722001098b5f12244b071"/>
 </record_update>

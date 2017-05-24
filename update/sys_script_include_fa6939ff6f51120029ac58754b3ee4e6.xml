@@ -9,20 +9,23 @@
         <name>DoNowUtil</name>
         <script><![CDATA[var DoNowUtil = Class.create();
 DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
-{
+										  {
 	tokenRE: /\+([^@]+)\@/,
 	contextRE: /@("([^"]+)|(\w+))(?![^@]*@)/,
 	priorityRE: /\s\!(\w*)(?![^!]*\!)/,
 	foundContext: false,
 	foundPriority: false,
-	
+	actionTable: 'x_snc_donow_action',
+	contextTable: 'x_snc_donow_context',
+	tokenTable: 'x_snc_donow_email_token',
+
 	/*
 	Description:
 	Return:
  	*/
 	getDefaultContextRecord : function(user) {
 		gs.debug("Entering getDefaultContext, user=" +user);
-		var gr = new GlideRecord("x_snc_donow_context");
+		var gr = new GlideRecord(this.contextTable);
 		gr.addQuery("owner", user);
 		gr.addQuery("my_default", true);
 		gr.query();
@@ -31,9 +34,9 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 			return gr;
 		}
 		return null;
-		
+
 	},
-	
+
 	getDefaultContextValue : function(user) {
 		var gr = this.getDefaultContextRecord(user);
 		if (gr != null) {
@@ -42,7 +45,7 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 			return null;
 		}
 	},
-	
+
 	getDefaultContextID : function(user) {
 		var gr = this.getDefaultContextRecord(user);
 		if (gr != null) {
@@ -51,31 +54,31 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 			return null;
 		}
 	},
-	
+
 	getMyDefaultContextValue : function() {
 		var userID = gs.getUserID();
 		var context = this.getDefaultContextValue(gs.getUserID());
 		gs.debug("In getMyDefaultContextValue, userID=" + userID + " context = " + context);
 		return context;
-		
+
 	},
-	
+
 	getMyDefaultContextID : function() {
 		var userID = gs.getUserID();
 		var context = this.getDefaultContextID(gs.getUserID());
 		gs.debug("In getMyDefaultContextID, userID=" + userID + " context = " + context);
 		return context;
-		
+
 	},
-	
+
 	getGTDUser: function(emailAddress) {
 		var token = null;
 		var found = this.tokenRE.exec(emailAddress);
 		if (found) {
-			token = found[1];
+			token = found[1];		
 			gs.debug("Entering getGTDUers, emailAddress=" +emailAddress);
 			gs.debug("token=" +token);
-			var gr = new GlideRecord('x_snc_donow_email_token');
+			var gr = new GlideRecord(this.tokenTable);
 			gr.addQuery('token', token);
 			gr.query();
 			if (gr.next()){
@@ -83,18 +86,18 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 				return gr.getValue('user');
 			}
 		}
-		
+
 		return null;
 	},
-	
+
 	hasGTDUser: function(emailAddress) {
 		var user = this.getGTDUser(emailAddress);
 		/* if user is not null, this is true */
 		return user != null;
 	},
-	
+
 	findContext: function(contextName, user) {
-		var gr = new GlideRecord("x_snc_donow_context");
+		var gr = new GlideRecord(this.contextTable);
 		gr.addQuery("value", contextName);
 		gr.addQuery("owner", user);
 		gr.query();
@@ -104,10 +107,10 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 		}
 		return null;
 	},
-	
+
 	findPriority: function(priorityName) {
 		var gr = new GlideRecord("sys_choice");
-		gr.addQuery("name", "x_snc_donow_action");
+		gr.addQuery("name", this.actionTable);
 		gr.addQuery("label", priorityName);
 		gr.query();
 		if (gr.next()) {
@@ -116,8 +119,8 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 		}
 		return null;
 	},
-	
-	
+
+
 	/*
  	*/
 	parseContext: function(subject, user) {
@@ -133,8 +136,8 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 			} else if (unquoted_context != null) {
 				context = unquoted_context;
 			}
-			gs.debug("In parseContext found branch for" +subject+ ": quoted_context = "+quoted_context +" unquoted_context = "+unquoted_context + " context = " + context );
-			
+			gs.debug("In parseContext found branch for" +subject+ ": quoted_context = "+quoted_context +" unquoted_context = "+unquoted_context + " context = " + context );			
+
 			// doing this to return null if there is no such context
 			// with this string in DB, IE there is a twitter handle
 			//but no real context in the subject
@@ -146,10 +149,10 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 		} else {
 			this.foundContext = true;
 		}
-		
+
 		return contextID;
 	},
-	
+
 	sanitizeSubject: function(subject) {
 		var sanitized =  subject.replace("Fwd: ", "").replace("Re: ", "").replace("FW: ", "");
 		if (this.foundContext) {
@@ -158,19 +161,19 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 		if (this.foundPriority) {
 			sanitized = sanitized.replace(this.priorityRE, "");
 		}
-		
+
 		return sanitized;
 	},
-	
+
 	parsePriority: function(subject) {
 		var priorityID = null;
 		var found = this.priorityRE.exec(subject);
 		if (found) {
 			var length = found.length;
 			var priority = null;
-			priority = found[1];
+			priority = found[1]; 
 			gs.debug("in parsePriority - regex found "+ priority);
-			
+
 			// doing this to return null if there is no such context
 			// with this string in DB, IE there is a twitter handle
 			//but no real context in the subject
@@ -181,10 +184,10 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 		} else {
 			this.foundPriority = true;
 		}
-		
+
 		return priorityID;
 	},
-	
+
 	/*
  	 * getUserActionHierarchy - get a list of action records in a hierarchical related order
  	 *
@@ -203,37 +206,55 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 			'assigned_to=' + userID + '^OR' +
 			'opened_by=' + userID + '^' +
 			'closed_atRELATIVEGE@dayofweek@ago@' + archiveDays;
-		
+
 		// One GlideRecord query to build the array - more memory, but faster (fewer DB hits)
-		var task = new GlideRecord('task');
+		var task = new GlideRecord(this.actionTable);
 		task.addEncodedQuery(queryString);
 		task.orderBy('execution_order');
 		task.query();
-		gs.debug('queryString=' + queryString);
-		gs.debug(task.getRowCount() + ' records read');
-		
+		// gs.debug('queryString=' + queryString);
+		// gs.debug(task.getRowCount() + ' records read');
+
 		while (task.next()) {
-			var obj = {};
-			obj.id = task.getValue('sys_id');
-				
-			obj.parent = task.getValue('parent');
-			obj.title = task.getValue('number') + ': ' + task.getValue('short_description');
-			// obj.title = task.number + ': ' + task.getValue('short_description');
-			// obj.order = task.getValue('execution_order');
-			// obj.short_description = task.getValue('short_description');
-			// obj.number = task.getValue('number');
-			// obj.sys_id = task.getValue('sys_id');
-			obj.parentNumber = task.parent.number + ': ' + task.parent.short_description;
-			obj.active = task.getValue('active') == 1;
+			var obj = this.createSPObject(task);
+			
 			list.push(obj);
 		}
-			
+
 		var orderList = this._buildTreeFromArray(list);
-		// gs.debug('orderList=' + JSON.stringify(orderList, null, 2));
-			
+		gs.debug('orderList=' + JSON.stringify(orderList, null, 2));
+
 		return orderList;
 	},
-	
+
+	/*
+	 * create an SP action object from the Action GlideRecord
+	 *
+	 * @param GlideRecord(this.actionTable)
+	 *
+	 */
+	createSPObject : function(actionGr) {
+
+		var obj = {};
+
+		obj.id          = actionGr.getValue('sys_id');
+		obj.editable    = false;
+		obj.title       =  actionGr.getValue('short_description');
+		// obj.short_title = obj.title;
+		obj.order       = actionGr.getValue('execution_order');
+		obj.active      = actionGr.getValue('active') == 1;
+		obj.context     = {
+			"display_value" : actionGr.context.getDisplayValue(),
+			"value" : actionGr.getValue('context')
+		};
+		obj.parent      = {
+			"display_value" : actionGr.parent_action.getDisplayValue(),
+			"value" : actionGr.getValue('parent_action')
+		};
+
+		return obj;
+	},
+
 	/*
 	 * _makeTitleString - trim the string if too long
 	 *
@@ -243,16 +264,16 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 	 *
 	 */
 	_makeTitleString : function(str, depth) {
-		
+
 		var answer = str;
 		var maxlen = 45 - ((depth - 1) * 10);
 		if (maxlen > 0 && str.length > maxlen) {
 			answer = str.substring(0, maxlen) + '...';
 		}
-		
+
 		return answer;
 	},
-		
+
 	/*
 	 * _buildTreeFromArray - take an array and connect the children as sub-arrays
 	 *
@@ -261,22 +282,22 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
  	 *
  	 */
 	_buildTreeFromArray : function(arr) {
-		
+
 		var objList = [];
-		
+
 		for (i = 0; i < arr.length; i++) {
-			
+
 			// If this is a top level task, find all children
-			if (!arr[i].parent) {
-				arr[i].title = this._makeTitleString(arr[i].title, 1);
-				arr[i].nodes = this._getChildren(arr[i], arr, 0);
+			if (!arr[i].parent.value) {
+				// arr[i].short_title = this._makeTitleString(arr[i].short_title, 1);
+				arr[i].nodes       = this._getChildren(arr[i], arr, 0);
 				objList.push(arr[i]);
 			}
 		}
-		
+
 		return objList;
 	},
-		
+
 	/*
 	 * _getChildren - find all records in the list where the parent field points to 'top'
 	 *                Works recursively through the tree.
@@ -288,27 +309,23 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
  	 *
  	 */
 	_getChildren : function(top, list, level) {
-		
+
 		var answer = [];
 		++level;
 		gs.debug('level=' + level + ' top.title=' + top.title);
 		for (var i = 0; i < list.length; i++) {
 			var obj = list[i];
-			
-			if (obj.parent == top.id) {
-				// gs.debug('  obj.number=' + obj.number);
-				obj.nodes = this._getChildren(obj, list, level);
-				// gs.debug('     nodes=' + JSON.stringify(answer.nodes, null, 2));
-				obj.title = this._makeTitleString(obj.title, level);
-				gs.debug('    _makeTitleString(): obj=' + JSON.stringify(obj, null, 2));
+
+			if (obj.parent.value == top.id) {
+				obj.nodes       = this._getChildren(obj, list, level);
+				// obj.short_title = this._makeTitleString(obj.short_title, level);
 				answer.push(obj);
 			}
 		}
-			
-		// gs.debug('   answer=' + JSON.stringify(answer, null, 2));
+
 		return answer;
 	},
-	
+
 	/*
 	 * getUserPreference - retrieve a user preference from the sys_user_preference table
 	 *                     If the user doesn't have one, check if there is a system definition
@@ -320,35 +337,35 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 	 *
 	 */
 	getUserPreference : function(name, defaultValue) {
-		
+
 		// first check if there is a user specific one
 		var userID = gs.getUserID();
 		var answer = defaultValue;
 		var type = 'string';
 		var up = new GlideRecord('sys_user_preference');
-		
+
 		up.addQuery('name', name);
 		up.addQuery('user', userID);
 		up.query();
-		
+
 		if (up.next()) {
 			answer = up.getValue('value');
 			type = up.getValue('type');
-			
-		// Next check if there is a system specific one
+
+			// Next check if there is a system specific one
 		} else {
 			var sp = new GlideRecord('sys_user_preference');
-		
+
 			sp.addQuery('name', name);
 			sp.addQuery('system', true);
 			sp.query();
-			
+
 			if (sp.next()) {
 				answer = sp.getValue('value');
 				type = sp.getValue('type');
 			}
 		}
-		
+
 		switch (type) {
 			case 'integer':
 				answer = parseInt(answer, 10);
@@ -363,7 +380,8 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 
 		return answer;
 	},
-		
+
+
 	type: 'DoNowUtil'
 });]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
@@ -379,6 +397,6 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
         <sys_update_name>sys_script_include_fa6939ff6f51120029ac58754b3ee4e6</sys_update_name>
         <sys_updated_by>chuck.tomasi</sys_updated_by>
-        <sys_updated_on>2016-12-15 00:09:29</sys_updated_on>
+        <sys_updated_on>2017-05-23 20:29:17</sys_updated_on>
     </sys_script_include>
 </record_update>

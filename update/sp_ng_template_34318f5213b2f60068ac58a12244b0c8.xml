@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_ng_template">
+    <sp_ng_template action="INSERT_OR_UPDATE">
+        <id>nodes_renderer</id>
+        <sp_widget display_value="DoNow Outliner">5735ab8e13beb60068ac58a12244b095</sp_widget>
+        <sys_class_name>sp_ng_template</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2017-05-20 12:48:29</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>34318f5213b2f60068ac58a12244b0c8</sys_id>
+        <sys_mod_count>107</sys_mod_count>
+        <sys_name>nodes_renderer</sys_name>
+        <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
+        <sys_update_name>sp_ng_template_34318f5213b2f60068ac58a12244b0c8</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2017-05-24 03:30:42</sys_updated_on>
+        <template><![CDATA[<div ui-tree-handle class="tree-node tree-node-content nodeContainer">
+  <table width="100%" border="0">
+    <tr>
+      <td class="colHandle">
+        &nbsp;
+      </td>
+      <td class="colChevron" data-nodrag>
+        <a data-nodrag class="btn btn-success btn-xs" ng-if="node.nodes && node.nodes.length > 0" data-nodrag ng-click="toggle(this)">
+          <span data-nodrag class="glyphicon" ng-class="{
+                                                        'glyphicon-chevron-right': collapsed,
+                                                        'glyphicon-chevron-down': !collapsed
+                                                        }">
+          </span>
+        </a>
+      </td>
+      <td class="colCheckBox" data-nodrag>
+      <span data-nodrag ng-if="node.active" ng-click="toggleActionActive(node)">
+        <i class="fa fa-square-o fa-2x" aria-hidden="true"></i>
+      </span>
+      <span data-nodrag ng-if="!node.active" ng-click="toggleActionActive(node)">
+        <i class="fa fa-check-square-o fa-2x" aria-hidden="true"></i>
+      </span>
+    </td>
+  <td class="colTitle" data-nodrag>
+    <form ng-submit="listSubmit(node)">
+      <input ng-if="node.editable" id="listEdit" maxlength="160" ng-model="node.title">
+      <span ng-if="!node.editable" ng-click="listEdit(node)">
+        {{node.title}}
+      </span>
+    </form>
+  </td>
+  <td class="colIcons">
+    <a class="btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;">
+      <span class="glyphicon glyphicon-plus"></span>
+    </a>
+    <a class="btn btn-info btn-xs" data-nodrag ng-click="c.onWidget('widget-form', {'table' : 'x_snc_donow_action', 'sys_id' : node.id, 'view' : 'donow'})">
+      <span class="glyphicon glyphicon-info-sign"></span>
+    </a>
+
+  </td>
+  </tr>
+</table>
+</div>
+<ol ui-tree-nodes ng-model="node.nodes" ng-class="{hidden: collapsed}">
+  <li data-expand-on-hover="500" ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer'">
+  </li>
+</ol>]]></template>
+    </sp_ng_template>
+</record_update>

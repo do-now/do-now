@@ -6,7 +6,7 @@
         <sys_class_name>sys_push_notif_app_install</sys_class_name>
         <sys_created_by>chuck.tomasi</sys_created_by>
         <sys_created_on>2016-12-08 01:52:48</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>1a901d39132b22001098b5f12244b0e5</sys_id>
         <sys_mod_count>1</sys_mod_count>
         <sys_name>bb917483e76ab66eebdc4f308febdfa016bcf2d8c2438e065203a9796d1eb14c</sys_name>

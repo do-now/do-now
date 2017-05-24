@@ -8,7 +8,6 @@
         <glyph/>
         <id/>
         <order>1</order>
-        <roles/>
         <short_description/>
         <size>md</size>
         <sp_column display_value="1">72c9b2c747282200c380b6a0ec9a715c</sp_column>
@@ -31,5 +30,4 @@
         <url/>
         <widget_parameters/>
     </sp_instance>
-    <sys_translated_text action="delete_multiple" query="documentkey=68d9b2c747282200c380b6a0ec9a7110"/>
 </record_update>

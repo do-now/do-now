@@ -6,28 +6,14 @@
             <list_id display_value="Action - Default view" name="x_snc_donow_action" related_list="NULL" sys_domain="global" view="Default view">593cf5bf6f51120029ac58754b3ee4f7</list_id>
             <order_by/>
             <position>0</position>
-            <related_list>task.parent</related_list>
+            <related_list>x_snc_donow_action.parent_action</related_list>
             <sys_class_name>sys_ui_related_list_entry</sys_class_name>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2016-09-16 21:33:23</sys_created_on>
-            <sys_id>2ad24ad713352200ae44b4622244b025</sys_id>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2017-05-20 22:01:05</sys_created_on>
+            <sys_id>8340016a1336320068ac58a12244b05f</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2016-09-16 21:33:23</sys_updated_on>
-        </sys_ui_related_list_entry>
-        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
-            <filter/>
-            <list_id display_value="Action - Default view" name="x_snc_donow_action" related_list="NULL" sys_domain="global" view="Default view">593cf5bf6f51120029ac58754b3ee4f7</list_id>
-            <order_by/>
-            <position>1</position>
-            <related_list>x_snc_donow_action.parent</related_list>
-            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2016-09-16 21:33:23</sys_created_on>
-            <sys_id>62d24ad713352200ae44b4622244b026</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2016-09-16 21:33:23</sys_updated_on>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2017-05-20 22:01:05</sys_updated_on>
         </sys_ui_related_list_entry>
         <sys_ui_related_list action="INSERT_OR_UPDATE">
             <calculated_name>Action - Default view</calculated_name>
@@ -37,9 +23,9 @@
             <position/>
             <related_list/>
             <sys_class_name>sys_ui_related_list</sys_class_name>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2016-09-16 21:33:23</sys_created_on>
-            <sys_customer_update>false</sys_customer_update>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2017-05-20 22:01:05</sys_created_on>
+            <sys_customer_update>true</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>593cf5bf6f51120029ac58754b3ee4f7</sys_id>
@@ -50,8 +36,8 @@
             <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
             <sys_update_name>sys_ui_related_x_snc_donow_action_null</sys_update_name>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2016-09-16 21:33:23</sys_updated_on>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2017-05-20 22:01:05</sys_updated_on>
             <sys_user/>
             <view display_value="Default view" name="NULL">Default view</view>
             <view_name/>

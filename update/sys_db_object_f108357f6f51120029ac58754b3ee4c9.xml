@@ -18,9 +18,7 @@
         <provider_class/>
         <read_access>true</read_access>
         <super_class/>
-        <sys_class_code/>
         <sys_class_name>sys_db_object</sys_class_name>
-        <sys_class_path/>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2016-02-07 17:23:25</sys_created_on>
         <sys_customer_update>false</sys_customer_update>

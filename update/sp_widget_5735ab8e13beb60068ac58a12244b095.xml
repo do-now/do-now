@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script><![CDATA[function($scope, $http, spUtil, spModal) {
+	/* widget controller */
+	/*
+	 * built on angular-ui-tree
+	 * https://github.com/angular-ui-tree/angular-ui-tree
+	 *
+	 */
+	var c = this;
+
+	/*
+	$scope.removeAction = function(node) {
+		console.log('removeAction');
+		// scope.remove();
+	};
+	*/
+
+	$scope.moveLastToTheBeginning = function () {
+		var a = $scope.data.pop();
+		$scope.data.splice(0, 0, a);
+	};
+
+	/*
+	 * treeOptions are callbacks to the tree view API
+	 */
+	$scope.treeOptions = {
+		removed: function(node) {
+			console.log('REMOVED!');
+			return true;
+		},
+
+		dropped : function(e) {
+			var actionID = e.source.nodeScope.$modelValue.id;
+			var parentID = e.dest.nodesScope.node ? e.dest.nodesScope.node.id : '';
+
+			$scope.moveItem(actionID, parentID);
+		}
+	};
+
+	/*
+	 * move an item from one place to another
+	 * also refactors the parent object in the object moved
+	 * reorders and updates the records involved
+	 * reload the data model
+	 */
+	$scope.moveItem = function (actionID, parentID) {
+		console.log('moveItem');
+
+		var reqBody = {
+			"actionID" : actionID,
+			"parentID" : parentID
+		};
+
+		$http({
+			method : "POST",
+			url : "/api/x_snc_donow/donow/spMoveAction",
+			headers : {"Content-type" : "application/json"},
+			data : reqBody
+		}).then(function success(response) {
+			var parentID = response.data.result.parentID;
+			var parentObj = $scope.updateChildsParentObj(actionID, parentID);
+			$scope.reorderActions(parentObj);
+			console.log('moveItem(): success.');
+		}, function failure(response) {
+			console.log('moveItem(): failure');
+		});
+
+	}
+
+	/* Find the parent object in the hierarchy
+	 * and update the child object's parent object
+	 */
+	$scope.updateChildsParentObj = function(actionID, parentID) {
+
+		// Default to top level
+		var parentObj = {
+			"id" : '',
+			"title" : '',
+			"nodes" : []
+		};
+		var childObj = {};
+
+		// If this has been moved to a sub-level...
+		if (parentID != null) {
+			// Find the parent
+			parentObj = $scope.locateParent($scope.data.actions, parentID);
+
+			// Find the child in the parent's list
+			childObj = $scope.locateChild(parentObj.nodes, actionID);
+
+		} else {
+			// For top level, just find the child in the node list
+			childObj = $scope.locateChild($scope.data.actions, actionID);
+		}
+
+		// Update the child accordingly
+		childObj.parent.value = parentObj.id;
+		childObj.parent.display_value = parentObj.title;
+
+		return parentObj;
+	}
+
+	/*
+	 * locate the parent object in the tree hierarchy
+	 * (recursive search)
+	 */
+	$scope.locateParent = function(list, id) {
+
+		var answer = {};
+		for (var i = 0; i < list.length; i++) {
+			if (list[i].id == id) {
+				return list[i];
+			}
+
+			if (list[i].nodes.length > 0) {
+				answer = $scope.locateParent(list[i].nodes, id);
+			}
+		}
+
+		return answer;
+	}
+
+	/* 
+	 * locate the child in a list of nodes
+	 */
+	$scope.locateChild = function(list, id) {
+
+		for (var i = 0; i < list.length; i++) {
+			if (list[i].id == id)
+				return list[i];
+		}
+	}
+
+	/*
+	 * update the records with new orders
+	 */
+	$scope.reorderActions = function(parentObj){
+
+		var execution_order = 100;
+		var parentID = parentObj.id;
+		var nodeList = [];
+
+		// If moved to the top level
+		if (parentObj.id == '') {
+			nodeList = $scope.data.actions;
+		} else {
+			// else get the real parent
+			nodeList = parentObj.nodes;		
+		}
+
+		for (var i = 0; i < nodeList.length; i++) {
+			$scope.writeAction(nodeList[i].id, {'execution_order': execution_order});
+			execution_order += 100;
+		}
+		c.server.update();
+	}	
+
+	/*
+	 * save a record to the data
+	 * whatever is in 'data' is what gets saved
+	 */
+	$scope.writeAction = function(sys_id, data) {
+		$http({
+			method: 'PUT',
+			url: '/api/now/table/x_snc_donow_action/'+ sys_id,
+			headers: {'Content-Type' : 'application/json'},
+			data : data
+		}).then(function success(response) {
+			console.log('writeAction(): success.');
+		}, function failure(response) {
+			console.log('writeAction(): failure');
+		});
+	};
+
+	/*
+	 * mark an action checked/complete (active=false)
+	 */
+	$scope.toggleActionActive = function(node) {
+		console.log('toggleActionActive: ' + JSON.stringify(node, null, 4));
+		node.active = !node.active;
+		$scope.writeAction(node.id, {"active" : node.active});
+	}
+
+	/*
+	 * Create a new top level item to get the list started
+	 */
+	$scope.newTopItem = function() {
+		$http({
+			method: 'POST',
+			url: '/api/now/table/x_snc_donow_action',
+			headers: {'Content-Type' : 'application/json'},
+			data : {
+				"short_description" : "New item"
+			}
+		});
+		c.server.update();
+	}
+
+	/*
+	 * insert a new sub item
+	 */
+	$scope.newSubItem = function (scope) {
+		console.log('newSubItem');
+
+		var nodeData = scope.$modelValue;
+		var reqBody = {
+			parentID : nodeData.id,
+			userID : $scope.data.userID
+		};
+
+		$http({
+			method : "POST",
+			url : "/api/x_snc_donow/donow/spCreateAction",
+			headers : {"Content-type" : "application/json"},
+			data : reqBody
+		}).then(function success(response) {
+			var nodeInfo = response.data.result.nodeInfo;
+			nodeData.nodes.push(nodeInfo);
+			console.log('newSubItem(): success.');
+		}, function failure(response) {
+			console.log('newSubItem(): failure');
+		});
+	};
+
+	/*
+	 * collapse all nodes
+	 */
+	$scope.collapseAll = function () {
+		$scope.$broadcast('angular-ui-tree:collapse-all');
+	};
+
+	/*
+	 * expand all nodes
+	 */
+	$scope.expandAll = function () {
+		$scope.$broadcast('angular-ui-tree:expand-all');
+	};
+
+	/*
+	$scope.open = function(item){
+		if ($scope.isOpen(item)){
+			$scope.opened = undefined;
+		} else {
+			$scope.opened = item;
+			console.log('open: ' + $scope.opened.title);	
+			spUtil.get("widget-form",
+								 {"table" : "x_snc_donow_action",
+									"sys_id": item.id,
+									"view" : "donow"}
+								).then(function(response) {
+				c.formWidget = response;
+			});
+		}        
+	};
+*/
+
+	$scope.isOpen = function(item) {
+		console.log('isOpen');
+		return $scope.opened === item;
+	};
+
+	$scope.anyItemOpen = function() {
+		return $scope.opened !== undefined;
+	};
+
+	$scope.close = function() {
+		console.log('close');
+		$scope.opened = undefined;
+	};
+
+	$scope.listEdit = function(node) {
+		console.log('listEdit: ' + node.title);
+		node.editable = true;
+	}
+
+	$scope.listSubmit = function(node) {
+		console.log('listSubmit: ' + node.title);
+		$scope.writeAction(node.id, {"short_description" : node.title});
+		node.editable = false;
+	}
+
+	/*
+	 * display the form widget in a modal
+	 */
+	c.onWidget = function(widgetId, widgetInput) {
+		console.log('onWidget: input=' + JSON.stringify(widgetInput, null, 4));
+		spModal.open({
+			title: 'Action details',
+			size : 'lg',
+			buttons : [
+				{"label" : "${Refresh list}", "primary" : "true"}
+			],
+			widget: widgetId, 
+			widgetInput: widgetInput || {}
+		}).then(function(response){
+			console.log('onWidget: response=' + JSON.stringify(response, null, 4));
+			c.server.update();
+		});
+	}
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.handleImage {
+  float : left;
+}
+
+.nodeContainer {
+  display: flex;
+  x-justify-content: space-around;
+  x-align-items: stretch;
+}
+
+.colHandle {
+  width: 15px;
+  flex: 0 0 15px;
+  background-color: #ccc;
+}
+
+.colChevron {
+  width: 1px;
+  flex: 0 0 1px;
+  padding: 0px 0px 0px 10px;
+}
+
+.colCheckBox {
+  width: 1px;
+  flex: 0 0 1px;
+  padding: 2px 10px 0px 0px;
+}
+
+.colTitle {
+}
+
+.colIcons {
+  width: 70px;
+  flex: 0 0 70px;
+	justify-content: flex-end;
+}
+
+#listEdit {
+  width : 100%;
+}
+
+ol {
+  list-style-type: none;
+}
+
+.node-disabled {
+  background-color: #ccc;
+}
+
+.btn {
+  margin-right: 8px;
+  color:#fff;
+}
+
+.angular-ui-tree-handle {
+  background: #f8faff;
+  border: 1px solid #dae2ea;
+  color: #7c9eb2;
+  padding: 0px 0px;
+}
+
+.angular-ui-tree-handle:hover {
+  color: #438eb9;
+  background: #f4f6f7;
+  border-color: #dce2e8;
+}
+
+.angular-ui-tree-placeholder {
+  background: #f0f9ff;
+  border: 2px dashed #bed2db;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+tr.angular-ui-tree-empty {
+  height:100px
+}
+
+.group-title {
+  background-color: #687074 !important;
+  color: #FFF !important;
+}
+
+
+/* --- Tree --- */
+.tree-node {
+  border: 1px solid #dae2ea;
+  background: #f8faff;
+  color: #7c9eb2;
+}
+
+.nodrop {
+  background-color: #f2dede;
+}
+
+.tree-node-content {
+  margin: 10px;
+}
+.tree-handle {
+  padding: 5px;
+  background: #428bca;
+  color: #FFF;
+  margin-right: 0px;
+}
+
+.angular-ui-tree-handle:hover {
+}
+
+.angular-ui-tree-placeholder {
+  background: #f0f9ff;
+  border: 2px dashed #bed2db;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>donow_outliner</id>
+        <internal>false</internal>
+        <link/>
+        <name>DoNow Outliner</name>
+        <option_schema>[{"name":"debug","default_value":"false","label":"Dump the list object in JSON at the bottom of the list.","type":"boolean"}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+	var dnu = new DoNowUtil();
+	
+	data.debug    = (options.debug == "true");
+	data.userName = gs.getUserDisplayName();
+	data.userID   = gs.getUserID();
+	data.actions  = dnu.getUserActionHierarchy();
+	data.newList  = (data.actions.length == 0);
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2017-05-19 20:44:46</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>5735ab8e13beb60068ac58a12244b095</sys_id>
+        <sys_mod_count>226</sys_mod_count>
+        <sys_name>DoNow Outliner</sys_name>
+        <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
+        <sys_update_name>sp_widget_5735ab8e13beb60068ac58a12244b095</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2017-05-24 03:36:21</sys_updated_on>
+        <template><![CDATA[<div class="row">
+  <div class="col-sm-12">
+    <h3>{{data.userName}}</h3>
+		<button ng-if="data.newList" class="btn btn-info" ng-click="newTopItem();">Create first item</button>
+    <button ng-if="!data.newList" class="btn btn-success" ng-click="expandAll()">Expand all</button>
+    <button ng-if="!data.newList" class="btn btn-primary" ng-click="collapseAll()">Collapse all</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-8">
+    <div data-ui-tree="treeOptions" id="tree-root">
+      <ol ui-tree-nodes ng-model="data.actions">
+        <li data-expand-on-hover="500" ng-repeat="node in data.actions" ui-tree-node ng-include="'nodes_renderer'"></li>
+      </ol>
+    </div>
+    <div ng-if="data.debug" class="info">
+      INFO: {{info}} ({{data.debug}})
+      <pre class="code">{{ data | json }}</pre>
+    </div>
+  </div>
+
+  <div class="col-sm-2">
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>
