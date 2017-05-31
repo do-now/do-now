@@ -16,21 +16,21 @@
         <scoped_administration>false</scoped_administration>
         <short_description/>
         <source>x_snc_donow</source>
-        <store_correlation_id/>
+        <store_correlation_id>REPOAPP0000001039</store_correlation_id>
         <store_url/>
         <sys_class_name>sys_app</sys_class_name>
         <sys_code/>
         <sys_created_by>dave.slusher</sys_created_by>
         <sys_created_on>2016-02-05 22:29:26</sys_created_on>
         <sys_id>bb8ba81b13d11600351d58a12244b0eb</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_updated_by>chuck.tomasi</sys_updated_by>
-        <sys_updated_on>2016-11-29 20:52:41</sys_updated_on>
+        <sys_updated_on>2017-05-29 15:59:00</sys_updated_on>
         <template/>
         <trackable>true</trackable>
         <user_role/>
         <vendor/>
         <vendor_prefix/>
-        <version>1.1.0</version>
+        <version>1.2.0</version>
     </sys_app>
 </record_update>

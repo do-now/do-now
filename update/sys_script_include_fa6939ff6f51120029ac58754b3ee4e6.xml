@@ -19,6 +19,27 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 	contextTable: 'x_snc_donow_context',
 	tokenTable: 'x_snc_donow_email_token',
 
+	getAllMyContexts : function(user) {
+		
+		gs.debug("Entering getAllMyContexts, user=" +user);
+		
+		var answer = [];
+		var gr = new GlideRecord(this.contextTable);
+		var q = 'active=true^is_private=true^owner=' +
+			user + '^NQactive=true^is_private=false';
+		gr.addEncodedQuery();
+		gr.query();
+		
+		while (gr.next()) {
+			var obj = {};
+			obj.label  = gr.getValue('label');
+			obj.sys_id = gr.getValue('sys_id');
+			answer.push(obj);
+		}
+		
+		return answer;
+	},
+
 	/*
 	Description:
 	Return:
@@ -120,7 +141,6 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 		return null;
 	},
 
-
 	/*
  	*/
 	parseContext: function(subject, user) {
@@ -217,7 +237,7 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 
 		while (task.next()) {
 			var obj = this.createSPObject(task);
-			
+
 			list.push(obj);
 		}
 
@@ -242,14 +262,17 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
 		obj.title       =  actionGr.getValue('short_description');
 		// obj.short_title = obj.title;
 		obj.order       = actionGr.getValue('execution_order');
+		obj.in_order    = actionGr.getValue('in_order') == 1;
 		obj.active      = actionGr.getValue('active') == 1;
+		obj.is_project     = actionGr.getValue('is_project') == 1;
 		obj.context     = {
 			"display_value" : actionGr.context.getDisplayValue(),
 			"value" : actionGr.getValue('context')
 		};
 		obj.parent      = {
 			"display_value" : actionGr.parent_action.getDisplayValue(),
-			"value" : actionGr.getValue('parent_action')
+			"value" : actionGr.getValue('parent_action'),
+			"in_order" : actionGr.parent_action.in_order.getDisplayValue() == "true"
 		};
 
 		return obj;
@@ -389,7 +412,7 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_created_on>2016-02-07 17:27:51</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>fa6939ff6f51120029ac58754b3ee4e6</sys_id>
-        <sys_mod_count>80</sys_mod_count>
+        <sys_mod_count>84</sys_mod_count>
         <sys_name>DoNowUtil</sys_name>
         <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
         <sys_policy>read</sys_policy>
@@ -397,6 +420,6 @@ DoNowUtil.prototype =Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
         <sys_update_name>sys_script_include_fa6939ff6f51120029ac58754b3ee4e6</sys_update_name>
         <sys_updated_by>chuck.tomasi</sys_updated_by>
-        <sys_updated_on>2017-05-23 20:29:17</sys_updated_on>
+        <sys_updated_on>2017-05-28 17:26:12</sys_updated_on>
     </sys_script_include>
 </record_update>

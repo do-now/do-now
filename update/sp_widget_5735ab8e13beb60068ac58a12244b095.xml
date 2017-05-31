@@ -17,6 +17,43 @@
 	};
 	*/
 
+	/* Doesn't display sub items if the parent doesn't contain the string :(
+	
+	$scope.visible = function (item) {
+
+		if (!$scope.query) {
+			// console.log(item.title + ' NO QUERY');
+			return true;
+		}
+
+		if ($scope.query.length == 0) {
+			// console.log(item.title + ' LENGTH=0');
+			return true;
+		}
+
+		var answer = false;
+		var match;
+
+		if ($scope.query) {
+			var re = new RegExp($scope.query, 'ig')
+			match = item.title.match(re);
+		}
+
+
+		if (match) {
+				console.log('MATCH: ' + item.title + ' q=' + $scope.query + ' ' + match);
+				return true;
+		}
+
+		return false;
+
+	};
+
+	$scope.findNodes = function () {
+
+	};
+	*/
+
 	$scope.moveLastToTheBeginning = function () {
 		var a = $scope.data.pop();
 		$scope.data.splice(0, 0, a);
@@ -59,6 +96,7 @@
 			headers : {"Content-type" : "application/json"},
 			data : reqBody
 		}).then(function success(response) {
+			// console.log('moveItem(0): response=' + JSON.stringify(response, null, 4));
 			var parentID = response.data.result.parentID;
 			var parentObj = $scope.updateChildsParentObj(actionID, parentID);
 			$scope.reorderActions(parentObj);
@@ -84,15 +122,18 @@
 
 		// If this has been moved to a sub-level...
 		if (parentID != null) {
+			// console.log('updateChildsParent(0): parentID != null');
 			// Find the parent
 			parentObj = $scope.locateParent($scope.data.actions, parentID);
-
+			// console.log('updateChildsParentObj(1): parentObj=' + parentObj.title);
 			// Find the child in the parent's list
 			childObj = $scope.locateChild(parentObj.nodes, actionID);
-
+			// console.log('updateChildsParentObj(2): childObj=' + childObj.title);
 		} else {
+			// console.log('updateChildsParent(3): top level');
 			// For top level, just find the child in the node list
 			childObj = $scope.locateChild($scope.data.actions, actionID);
+			// console.log('updateChildsParentObj(4): childObj=' + childObj.title);
 		}
 
 		// Update the child accordingly
@@ -108,8 +149,8 @@
 	 */
 	$scope.locateParent = function(list, id) {
 
-		var answer = {};
-		for (var i = 0; i < list.length; i++) {
+		var answer = { "id" : ""};
+		for (var i = 0; i < list.length && answer.id == ""; i++) {
 			if (list[i].id == id) {
 				return list[i];
 			}
@@ -150,6 +191,7 @@
 			nodeList = parentObj.nodes;		
 		}
 
+		console.log('reorderActions(): nodeList.length=' + nodeList.length);
 		for (var i = 0; i < nodeList.length; i++) {
 			$scope.writeAction(nodeList[i].id, {'execution_order': execution_order});
 			execution_order += 100;
@@ -449,7 +491,7 @@ tr.angular-ui-tree-empty {
         <sys_created_on>2017-05-19 20:44:46</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>5735ab8e13beb60068ac58a12244b095</sys_id>
-        <sys_mod_count>226</sys_mod_count>
+        <sys_mod_count>243</sys_mod_count>
         <sys_name>DoNow Outliner</sys_name>
         <sys_package display_value="DoNow" source="x_snc_donow">bb8ba81b13d11600351d58a12244b0eb</sys_package>
         <sys_policy/>
@@ -457,13 +499,17 @@ tr.angular-ui-tree-empty {
         <sys_scope display_value="DoNow">bb8ba81b13d11600351d58a12244b0eb</sys_scope>
         <sys_update_name>sp_widget_5735ab8e13beb60068ac58a12244b095</sys_update_name>
         <sys_updated_by>chuck.tomasi</sys_updated_by>
-        <sys_updated_on>2017-05-24 03:36:21</sys_updated_on>
+        <sys_updated_on>2017-05-30 22:57:34</sys_updated_on>
         <template><![CDATA[<div class="row">
   <div class="col-sm-12">
     <h3>{{data.userName}}</h3>
-		<button ng-if="data.newList" class="btn btn-info" ng-click="newTopItem();">Create first item</button>
+    <button ng-if="data.newList" class="btn btn-info" ng-click="newTopItem();">Create first item</button>
     <button ng-if="!data.newList" class="btn btn-success" ng-click="expandAll()">Expand all</button>
     <button ng-if="!data.newList" class="btn btn-primary" ng-click="collapseAll()">Collapse all</button>
+<!--    <div class="col-sm-6">
+      <p>Search: <input ng-model="query" ng-change="findNodes()"></p>
+    </div>
+-->
   </div>
 </div>
 

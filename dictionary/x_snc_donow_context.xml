@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <element label="Context" max_length="40" name="x_snc_donow_context" type="collection">
-        <element label="Private" max_length="40" name="is_private" type="boolean"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element default="true" label="Private" max_length="40" name="is_private" type="boolean"/>
         <element display="true" label="Label" max_length="40" name="label" type="string"/>
         <element label="My default" max_length="40" name="my_default" type="boolean"/>
         <element default="javascript:gs.getUserID();" dynamic_default_value="2fd8e97bef3221002841f7f775c0fbc1" label="Owner" max_length="32" name="owner" reference="sys_user" type="reference" use_dynamic_default="true"/>

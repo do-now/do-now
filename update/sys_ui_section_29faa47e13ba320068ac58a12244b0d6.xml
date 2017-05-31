@@ -5,13 +5,13 @@
             <element>context</element>
             <position>0</position>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2017-05-22 19:53:41</sys_created_on>
-            <sys_id>1c5636cf1336720068ac58a12244b0d3</sys_id>
+            <sys_created_on>2017-05-24 17:29:18</sys_created_on>
+            <sys_id>457820371376b20068ac58a12244b00e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="General" display_value="General" name="x_snc_donow_action" sys_domain="global" view="365aa07e13ba320068ac58a12244b013">29faa47e13ba320068ac58a12244b0d6</sys_ui_section>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2017-05-22 19:53:41</sys_updated_on>
+            <sys_updated_on>2017-05-24 17:29:18</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -19,13 +19,13 @@
             <element>assigned_to</element>
             <position>1</position>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2017-05-22 19:53:41</sys_created_on>
-            <sys_id>905636cf1336720068ac58a12244b0d4</sys_id>
+            <sys_created_on>2017-05-24 17:29:18</sys_created_on>
+            <sys_id>c57820371376b20068ac58a12244b00e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="General" display_value="General" name="x_snc_donow_action" sys_domain="global" view="365aa07e13ba320068ac58a12244b013">29faa47e13ba320068ac58a12244b0d6</sys_ui_section>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2017-05-22 19:53:41</sys_updated_on>
+            <sys_updated_on>2017-05-24 17:29:18</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -33,13 +33,13 @@
             <element>due_date</element>
             <position>2</position>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2017-05-22 19:53:41</sys_created_on>
-            <sys_id>145636cf1336720068ac58a12244b0d4</sys_id>
+            <sys_created_on>2017-05-24 17:29:18</sys_created_on>
+            <sys_id>497820371376b20068ac58a12244b00e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="General" display_value="General" name="x_snc_donow_action" sys_domain="global" view="365aa07e13ba320068ac58a12244b013">29faa47e13ba320068ac58a12244b0d6</sys_ui_section>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2017-05-22 19:53:41</sys_updated_on>
+            <sys_updated_on>2017-05-24 17:29:18</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -47,13 +47,13 @@
             <element>.split</element>
             <position>3</position>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2017-05-22 19:53:41</sys_created_on>
-            <sys_id>945636cf1336720068ac58a12244b0d4</sys_id>
+            <sys_created_on>2017-05-24 17:29:18</sys_created_on>
+            <sys_id>c97820371376b20068ac58a12244b00e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="General" display_value="General" name="x_snc_donow_action" sys_domain="global" view="365aa07e13ba320068ac58a12244b013">29faa47e13ba320068ac58a12244b0d6</sys_ui_section>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2017-05-22 19:53:41</sys_updated_on>
+            <sys_updated_on>2017-05-24 17:29:18</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
@@ -61,41 +61,41 @@
             <element>is_project</element>
             <position>4</position>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2017-05-22 19:53:41</sys_created_on>
-            <sys_id>185636cf1336720068ac58a12244b0d4</sys_id>
+            <sys_created_on>2017-05-24 17:29:18</sys_created_on>
+            <sys_id>4d7820371376b20068ac58a12244b00e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="General" display_value="General" name="x_snc_donow_action" sys_domain="global" view="365aa07e13ba320068ac58a12244b013">29faa47e13ba320068ac58a12244b0d6</sys_ui_section>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2017-05-22 19:53:41</sys_updated_on>
+            <sys_updated_on>2017-05-24 17:29:18</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>in_order</element>
+            <position>5</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2017-05-24 17:29:18</sys_created_on>
+            <sys_id>cd7820371376b20068ac58a12244b00e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="General" display_value="General" name="x_snc_donow_action" sys_domain="global" view="365aa07e13ba320068ac58a12244b013">29faa47e13ba320068ac58a12244b0d6</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2017-05-24 17:29:18</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>priority</element>
-            <position>5</position>
-            <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2017-05-22 19:53:41</sys_created_on>
-            <sys_id>985636cf1336720068ac58a12244b0d4</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="General" display_value="General" name="x_snc_donow_action" sys_domain="global" view="365aa07e13ba320068ac58a12244b013">29faa47e13ba320068ac58a12244b0d6</sys_ui_section>
-            <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2017-05-22 19:53:41</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>state</element>
             <position>6</position>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2017-05-22 19:53:41</sys_created_on>
-            <sys_id>1c5636cf1336720068ac58a12244b0d4</sys_id>
+            <sys_created_on>2017-05-24 17:29:18</sys_created_on>
+            <sys_id>417820371376b20068ac58a12244b00f</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="General" display_value="General" name="x_snc_donow_action" sys_domain="global" view="365aa07e13ba320068ac58a12244b013">29faa47e13ba320068ac58a12244b0d6</sys_ui_section>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2017-05-22 19:53:41</sys_updated_on>
+            <sys_updated_on>2017-05-24 17:29:18</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
