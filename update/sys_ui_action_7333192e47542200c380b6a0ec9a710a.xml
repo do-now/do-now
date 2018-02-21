@@ -10,6 +10,7 @@
         <form_button>false</form_button>
         <form_context_menu>false</form_context_menu>
         <form_link>false</form_link>
+        <form_style/>
         <hint/>
         <list_action>true</list_action>
         <list_banner_button>true</list_banner_button>
@@ -18,6 +19,7 @@
         <list_context_menu>false</list_context_menu>
         <list_link>false</list_link>
         <list_save_with_form_button>false</list_save_with_form_button>
+        <list_style/>
         <name>Create Email Token</name>
         <onclick/>
         <order>100</order>

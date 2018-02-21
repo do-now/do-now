@@ -3,7 +3,7 @@
     <ua_table_licensing_config action="INSERT_OR_UPDATE">
         <is_fulfillment>false</is_fulfillment>
         <license_condition/>
-        <license_model/>
+        <license_model>none</license_model>
         <license_roles/>
         <name>x_snc_donow_email_token</name>
         <op_delete>false</op_delete>

@@ -4,6 +4,7 @@
         <field_list>short_description</field_list>
         <script/>
         <search_fields/>
+        <style_field/>
         <sys_class_name>sys_ui_title</sys_class_name>
         <sys_created_by>chuck.tomasi</sys_created_by>
         <sys_created_on>2017-05-23 21:21:06</sys_created_on>
